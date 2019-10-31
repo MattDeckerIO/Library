@@ -1,0 +1,4 @@
+CASE 
+  WHEN NOT REGEXP_MATCH(Social Network,'Facebook|Twitter|LinkedIn') THEN "Other"
+  ELSE Social Network
+END

@@ -1,0 +1,6 @@
+CASE 
+  WHEN CONTAINS_TEXT(Page, "voices-field") THEN "Blog"
+  WHEN CONTAINS_TEXT(Page, "events/conferences-and-learning-events") THEN "Face-to-Face Event"
+  WHEN CONTAINS_TEXT(Page, "stay-connected/news") THEN "News Clips"
+  WHEN CONTAINS_TEXT(Page, "events/webinars") THEN "Webinar"
+END

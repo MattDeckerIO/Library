@@ -1,0 +1,12 @@
+CASE
+  WHEN CONTAINS_TEXT(Medium,"organic")
+  THEN "Web Searchers"
+
+  WHEN CONTAINS_TEXT(Medium,"(none)")
+  THEN "Direct Traffic"
+  
+  WHEN CONTAINS_TEXT(Medium,"referral")
+  THEN "Referrals"
+  
+  ELSE "Other" 
+END
