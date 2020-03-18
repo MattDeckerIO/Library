@@ -1,189 +1,73 @@
 {
-    "name": "drupal/projectname",
-    "description": "Drupal 8 starterkit",
-    "type": "project",
-    "license": "GPL-2.0-or-later",
-    "authors": [
-        {
-            "name": "",
-            "role": ""
-        }
-    ],
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
-        }
-    ],
-    "require": {
-        "php": ">=7.2",
-        "composer/installers": "^1.2",
-        "cweagans/composer-patches": "^1.6.5",
-        "drupal/core": "^8.8",
-        "drupal/core-composer-scaffold": "^8.8"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "config": {
-        "sort-packages": true
-    },
-    "scripts": {
-        "pre-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
-        "pre-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
-        "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ],
-        "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ]
-    },
-    "extra": {
-        "composer-exit-on-patch-failure": true,
-        "patchLevel": {
-            "drupal/core": "-p2"
-        },
-        "installer-paths": {
-            "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library"],
-            "web/modules/contrib/{$name}": ["type:drupal-module"],
-            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
-            "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/{$name}": ["type:drupal-drush"],
-            "modules/custom/{$name}": ["type:drupal-custom-module"],
-            "themes/custom/{$name}": ["type:drupal-custom-theme"]
-        },
-        "drupal-scaffold": {
-            "omit-defaults": true,
-            "locations": {
-                "project-root": "./",
-                "web-root": "./web"
-              },
-            "file-mapping": {
-                "[project-root]/.editorconfig":{
-                    "mode": "replace",
-                    "path": "./web/core/assets/scaffold/files/editorconfig",
-                    "overwrite": false
-                  },
-                  "[project-root]/.gitattributes":{
-                    "mode": "replace",
-                    "path": "./web/core/assets/scaffold/files/gitattributes",
-                    "overwrite": false
-                  },
-                  "[project-root]/.gitignore":{
-                    "mode": "replace",
-                    "path": "./web/core/assets/scaffold/files/example.gitignore",
-                    "overwrite": false
-                  },
-                  "[web-root]/.csslintrc":{
-                    "mode": "replace",
-                    "path": "./web/core/assets/scaffold/files/csslintrc",
-                    "overwrite": false
-                  },
-                  "[web-root]/.eslintignore":{
-                    "mode": "replace",
-                    "path": "./web/core/assets/scaffold/files/eslintignore",
-                    "overwrite": false
-                  },
-                  "[web-root]/.eslintrc.json":{
-                    "mode": "replace",
-                    "path": "./web/core/assets/scaffold/files/eslintrc.json",
-                    "overwrite": false
-                  },
-                  "[web-root]/.ht.router.php":{
-                    "mode": "replace",
-                    "path": "./web/core/assets/scaffold/files/ht.router.php",
-                    "overwrite": false
-                  },
-                  "[web-root]/.htaccess":{
-                    "mode": "replace",
-                    "path": "./web/core/assets/scaffold/files/htaccess",
-                    "overwrite": false
-                  },
-                  "[web-root]/.gitignore":{
-                    "mode": "replace",
-                    "path": "./web/core/assets/scaffold/files/example.gitignore",
-                    "overwrite": false
-                  },
-                  "[web-root]/index.php":{
-                    "mode": "replace",
-                    "path": "./web/core/assets/scaffold/files/index.php",
-                    "overwrite": false
-                  },
-                  "[web-root]/INSTALL.txt":{
-                    "mode": "replace",
-                    "path": "./web/core/assets/scaffold/files/drupal.INSTALL.txt",
-                    "overwrite": false
-                  },
-                  "[web-root]/README.txt":{
-                    "mode": "replace",
-                    "path": "./web/core/assets/scaffold/files/drupal.README.txt",
-                    "overwrite": false
-                  },
-                  "[web-root]/robots.txt":{
-                    "mode": "replace",
-                    "path": "./web/core/assets/scaffold/files/robots.txt",
-                    "overwrite": false
-                  },
-                  "[web-root]/update.php":{
-                    "mode": "replace",
-                    "path": "./web/core/assets/scaffold/files/update.php",
-                    "overwrite": false
-                  },
-                  "[web-root]/web.config":{
-                    "mode": "replace",
-                    "path": "./web/core/assets/scaffold/files/web.config",
-                    "overwrite": false
-                  },
-                  "[web-root]/sites/README.txt":{
-                    "mode": "replace",
-                    "path": "./web/core/assets/scaffold/files/sites.README.txt",
-                    "overwrite": false
-                  },
-                  "[web-root]/sites/development.services.yml":{
-                    "mode": "replace",
-                    "path": "./web/core/assets/scaffold/files/development.services.yml",
-                    "overwrite": false
-                  },
-                  "[web-root]/sites/example.settings.local.php":{
-                    "mode": "replace",
-                    "path": "./web/core/assets/scaffold/files/example.settings.local.php",
-                    "overwrite": false
-                  },
-                  "[web-root]/sites/example.sites.php":{
-                    "mode": "replace",
-                    "path": "./web/core/assets/scaffold/files/example.sites.php",
-                    "overwrite": false
-                  },
-                  "[web-root]/sites/default/default.services.yml": {
-                      "mode": "replace",
-                      "path": "web/core/assets/scaffold/files/default.services.yml",
-                      "overwrite": false
-                  },
-                  "[web-root]/sites/default/default.settings.php": {
-                      "mode": "replace",
-                      "path": "web/core/assets/scaffold/files/default.settings.php",
-                      "overwrite": false
-                  },
-                  "[web-root]/modules/README.txt": {
-                    "mode": "replace",
-                    "path": "./web/core/assets/scaffold/files/modules.README.txt",
-                    "overwrite": false
-                  },
-                  "[web-root]/profiles/README.txt": {
-                    "mode": "replace",
-                    "path": "./web/core/assets/scaffold/files/profiles.README.txt",
-                    "overwrite": false
-                  },
-                  "[web-root]/themes/README.txt": {
-                    "mode": "replace",
-                    "path": "./web/core/assets/scaffold/files/themes.README.txt",
-                    "overwrite": false
-                  }
-            }
-        }
+  "name": "drupal/projectname",
+  "description": "Drupal 8 Starterkit",
+  "type": "project",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "",
+      "role": ""
     }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    }
+  ],
+  "require": {
+    "php": ">=7.2",
+    "cweagans/composer-patches": "^1.6.5",
+    "drupal/core-composer-scaffold": "^8.8",
+    "drupal/core-recommended": "^8.8",
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "sort-packages": true
+  },
+  "scripts": {
+    "pre-install-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+    ],
+    "pre-update-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+    ],
+    "post-install-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+    ],
+    "post-update-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+    ]
+  },
+  "extra": {
+    "composer-exit-on-patch-failure": true,
+    "patchLevel": {
+      "drupal/core": "-p2"
+    },
+    "installer-paths": {
+      "web/core": ["type:drupal-core"],
+      "web/libraries/{$name}": ["type:drupal-library"],
+      "web/modules/contrib/{$name}": ["type:drupal-module"],
+      "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+      "web/themes/contrib/{$name}": ["type:drupal-theme"],
+      "drush/{$name}": ["type:drupal-drush"],
+      "modules/custom/{$name}": ["type:drupal-custom-module"],
+      "themes/custom/{$name}": ["type:drupal-custom-theme"]
+    },
+    "drupal-scaffold": {
+      "omit-defaults": true,
+      "locations": {
+        "project-root": "./",
+        "web-root": "./web"
+        },
+      "file-mapping": {
+        "[project-root]/.gitignore":{
+          "mode": "replace",
+          "path": "./web/core/assets/scaffold/files/example.gitignore",
+          "overwrite": false
+        }
+      }
+    }
+  }
 }
