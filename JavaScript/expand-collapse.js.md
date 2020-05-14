@@ -1,8 +1,74 @@
+# Accessible Expand/Collapse
+> Creates expand/collapse sections with a label and a body.
+
+### expand_collapse.html.twig
+```html
+<div class="expand-collapse wrapper">
+  <div class="expand-collapse label">
+    {{ content.label }}
+  </div>
+  <div class="expand-collapse body">
+    {{ content.body }}
+  </div>
+</div>
+```
+
+### expand-collapse.sass
+```scss
+/* Styles for when the button is active */
+.expand-collapse.wrapper
+{
+  .label
+  {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+    &[aria-expanded='true'],
+    &:hover
+    {
+      /* Styles for the active/hover buton. */
+    }
+  }
+  .body
+  {
+    /* Styles for the body. */
+  }
+}
+```
+
+### [theme].layouts.yml
+```yaml
+expand_collapse:
+  label: Expand Collapse
+  category: Layouts
+  template: layouts/expand_collapse
+  regions:
+    label:
+      label: Label
+    body:
+      label: Body
+```
+
+### theme.libraries.yml
+```yaml
+global-styling:
+  version: VERSION
+  js:
+    js/global.js: {}
+  css:
+    component:
+      css/styles.css: {}
+      //netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css: {}
+```
+
+### global.js
+```javascript
 jQuery(function($){
 
-  // Expand/Collapse CEEDAR Dashboard Blocks
-  expandCollapse('.my-cslg-groups .view-header','table', 2);
-  expandCollapse('.my-inactive-cslg-groups .view-header','table', 2);
+  // Attach expand/collapse handlers
+  expandCollapse(true, '.expand-collapse.label','.expand-collapse.body', 2);
 
 });
 
@@ -12,27 +78,41 @@ jQuery(function($){
  * The selector string is the element that the user clicks with the keyboard
  * or mouse. This element is automatically given a tab index, aria state, a
  * cursor pointer, and a chevron. The aria state and chevron automatically
- * toggles appropriately.
+ * toggles appropriately. The number of levels is the number of levels to go
+ * up through the dom then search all of the children. Only go as high as
+ * needed in order to find the common parent.
  *
+ * @param String d Default state; true = closed, false = open
  * @param String e CSS Selector of clickable elements
  * @param String t CSS Selector of collapsible content
  * @param String l Number of levels to search for the collapsible content
  *
  * @author Matt Decker <mdecker@air.org>
  */
-function expandCollapse(e, t, l)
+function expandCollapse(d, e, t, l)
 {
   // Identify elements
-  var elem = jQuery(e).not('[tabinde
+  var elem = jQuery(e).not('[tabindex]');
 
   // Set tab index
   elem.attr('tabindex',0);
 
   // Set ARIA
-  elem.attr('aria-expanded', true);
+  if (d)
+  {
+    elem.attr('aria-expanded', false);
+  } else
+  {
+    elem.attr('aria-expanded', true);
+  }
 
   // Set chevron
-  elem.append('<i class="expandCollapseChevron fas fa-chevron-up" style="position: absolute; right: 0;" ></i>');
+  if (d)
+  {
+    elem.append('<i class="expandCollapseChevron icon-chevron-down";" ></i>');
+  } else {
+    elem.append('<i class="expandCollapseChevron icon-chevron-up";" ></i>');
+  }
 
   // Set cursor
   elem.css('cursor', 'pointer');
@@ -67,7 +147,7 @@ function toggleContent(e)
 
   // Toggle chevron
   try {
-    locateElement(targ, 'i', 1).toggleClass('fa-chevron-down').toggleClass('fa-chevron-up');
+    locateElement(targ, 'i', 1).toggleClass('icon-chevron-down').toggleClass('icon-chevron-up');
   } catch(e)
   {
     console.error('Could not toggle chevron.');
@@ -116,3 +196,4 @@ function locateElement(e, n, l = 2)
 
   return false;
 }
+```
