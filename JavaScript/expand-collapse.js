@@ -23,7 +23,7 @@ jQuery(function($){
 function expandCollapse(e, t, l)
 {
   // Identify elements
-  var elem = jQuery(e);
+  var elem = jQuery(e).not('[tabinde
 
   // Set tab index
   elem.attr('tabindex',0);
