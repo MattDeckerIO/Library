@@ -95,7 +95,10 @@ function expandCollapse(d, e, t, l)
   var elem = jQuery(e).not('[tabindex]');
 
   // Set tab index
-  elem.attr('tabindex',0);
+  elem.attr('tabindex', 0);
+
+  // Set role
+  elem.attr('role','link');
 
   // Set ARIA
   if (d)
@@ -109,9 +112,9 @@ function expandCollapse(d, e, t, l)
   // Set chevron
   if (d)
   {
-    elem.append('<i class="expandCollapseChevron icon-chevron-down";" ></i>');
+    elem.append('<i class="expandCollapseChevron icon-chevron-down";" style="pointer-events: none;" ></i>');
   } else {
-    elem.append('<i class="expandCollapseChevron icon-chevron-up";" ></i>');
+    elem.append('<i class="expandCollapseChevron icon-chevron-up";" style="pointer-events: none;"></i>');
   }
 
   // Set cursor
