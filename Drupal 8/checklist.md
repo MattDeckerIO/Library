@@ -39,6 +39,7 @@
 |         | &check; |     | All pages have unique page titles
 |         | &check; |     | Google Analytics installed
 |         | &check; |     | Google Analytics verified from GA dashboard
+|         | &check; |     | Google Analytics only shows data from the prod hostname
 |         |         |     | **Pathauto**
 |         | &check; |     | Pattern created and applied to every content type and vocabulary
 |         | &check; |     | Default path pattern: ```[node:menu-link:parents:join-path]/[node:title]```
