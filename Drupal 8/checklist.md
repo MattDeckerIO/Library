@@ -78,11 +78,11 @@
 |         | &check; |     | All elevated user accounts correlate to a single person
 |         | &check; |     | Commenting disabled unless otherwise specified
 |         | &check; |     | Devel disabled on production
-|         | &check; |     | reCAPTCHA added to all exposed forms
+|         | &check; |     | Spam protection applied to all exposed forms. 
 |         | &check; |     | Roles: All roles that can create or edit or delete content
 |         | &check; |     | Password Expiration: ```Expiration: 90  Complexity: 4 History: 24 Username: 1 Length: 12```
 |         | &check; |     | Force ALL passwords to change when policies are created or modified and prior to website launch.
-|         | &check; |     | 2FA applied to content administrator role and above
+|         | &check; |     | 2FA applied to content administrator role and above if required
 |         | &check; |     | user.flood.yml: ```uid_only: false; ip_limit: 5; ip_window: 21600; user_limit: 5; user_window: 21600```
 
 1. Notes
