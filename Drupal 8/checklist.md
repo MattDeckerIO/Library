@@ -62,7 +62,8 @@
 |         | &check; |     | Syslog Identity: ```<domainname>_drupal_8 ( i.e. youth_gov_drupal_8 )```
 |         | &check; |     | Syslog Facility: ```LOG_LOCAL0```
 |         | &check; |     | Syslog Format: ```!base_url|!timestamp|!type|!ip|!request_uri|!referer|!uid|!link|!message```
-|         | &check; |     | Healthcheck installed
+|         | &check; |     | Timestamp available at /health
+|         | &check; |     | External monitoring configured and checked.
 
 
 ### Security
