@@ -1,0 +1,24 @@
+<?php
+
+function health_menu()
+{
+  $items = [];
+
+  $items['health'] = [
+    'page callback' => 'health',
+    'access callback' => TRUE,
+  ];
+
+  return $items;
+}
+
+function health()
+{
+  drupal_page_is_cacheable(FALSE); // Disable caching
+
+  $host = gethostname();
+  $time = time();
+  $r = sprintf("host:%s time:%s", $host, $time);
+
+  echo $r;
+}

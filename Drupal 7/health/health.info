@@ -1,0 +1,4 @@
+name = 'Health'
+description = 'Health check to confirm application availability'
+core = 7.x
+package = 'Performance and scalability'
