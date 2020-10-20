@@ -56,6 +56,7 @@
 |         | &check; |     | Error messages to display: none
 |         | &check; |     | Database log messages to keep: 1000
 |         | &check; |     | Website log reviewed for errors
+|         | &check; |     | Website log shows real IP addresses
 |         | &check; |     | Timestamp available at /health
 |         | &check; |     | ```log_stdout``` installed and enabled
 |         | &check; |     | External monitoring configured and checked.
@@ -85,3 +86,6 @@
 2. Reason why not compliant #1.
 3. Reason why not compliant #2.
 4. ...
+
+
+##### Checklist v20201020
