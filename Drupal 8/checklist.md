@@ -81,6 +81,7 @@
 |         | &check; |     | Force ALL passwords to change when policies are created or modified and prior to website launch.
 |         | &check; |     | 2FA applied to content administrator role and above if required
 |         | &check; |     | Flood protection: ```uid_only: false; ip_limit: 5; ip_window: 21600; user_limit: 5; user_window: 21600```
+|         | &check; |     | All file upload fields limited to: ```txt, pdf, doc, docx, xls, xlsx, ppt, pptx, jpg, jpeg, gif, png```
 
 1. Not applicable.
 2. Reason why not compliant #1.
@@ -88,4 +89,4 @@
 4. ...
 
 
-##### Checklist v20201020
+##### Checklist v20210105
