@@ -40,6 +40,8 @@ $config['system.performance']['css']['preprocess'] = FALSE;
 $config['system.performance']['js']['preprocess'] = FALSE;
 $config['system.logging']['error_level'] = 'verbose';
 
+$config['google_analytics.settings']['account'] = 'UA-0000000-00';
+
 ```
 
 ### web/sites/development.services.yml
