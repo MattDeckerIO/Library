@@ -39,9 +39,7 @@
       "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
     ],
     "post-update-cmd": [
-      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-      "mkdir -p web/libraries/bootstrap",
-      "cp -R vendor/twbs/bootstrap/dist web/libraries/bootstrap"
+      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
     ]
   },
   "extra": {
