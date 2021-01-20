@@ -11,13 +11,14 @@ def run():
   identifyComposer()
   identifyVendor()
 
-  # subprocess.run(['composer','config','process-timeout','2000'])
+  subprocess.run(['composer','config','process-timeout','2000'])
 
   outdatedProjects = identifySecurityUpdates()
 
   # This is typically optional but sometimes required.
-  purge()
+  # purge()
 
+  # Applies updates
   total, updated, failed = len(outdatedProjects), 0, 0
   for project in outdatedProjects:
     u, f = applyUpdate(project, outdatedProjects[project])
@@ -30,9 +31,6 @@ def run():
 
 def applyUpdate(projectName, projectVersion):
   print('Applying update to '+projectName+"\n")
-  # subprocess.run(['composer','config','process-timeout','2000'])
-  if projectName == 'drupal/core':
-    projectName = 'drupal/core-recommended'
 
   projectNameVersion = projectName+':^'+projectVersion
   print("Running: composer require "+projectNameVersion+" --update-with-all-dependencies\n")
@@ -65,26 +63,27 @@ def identifyVendor():
 
 # Runs composer outdated drupal/* to identify projects requiring updates
 def identifySecurityUpdates():
-  result = subprocess.run(['drush','sec','--format=string'], stdout=subprocess.PIPE, universal_newlines=True)
-  composerOutdated = result.stdout
+  # Get the list of Drupal updates
+  oustandingSecurity = getSecurityUpdates()
+  # Get the list of latest versions
+  composerOutdated = getNewVersions()
 
-  newVersions = getNewVersions()
-
-  projects = {}
-  outdatedProjects = re.findall(r"(drupal/.+)", composerOutdated)
-  for project in outdatedProjects:
-    if '\t' in project:
-      project_version = project.split('\t')
-      name = project_version[0]
-      projects[name] = newVersions[name]
+  # Loop through the Drupal updates and get the latest
+  # version number from composer.
+  projectsToInstall = {}
+  for project in oustandingSecurity.keys():
+    if project == 'drupal/core':
+      project = 'drupal/recommended-project'
+    projectsToInstall[project] = composerOutdated[project]
 
   # Return the number of projects
-  if (len(projects) == 1):
-    print("Identified "+str(len(projects))+" outdated project.\n")
+  if (len(projectsToInstall) == 1):
+    print("Identified "+str(len(projectsToInstall))+" outdated project.\n")
   else:
-    print("Identified "+str(len(projects))+" outdated projects.\n")
-  return projects
+    print("Identified "+str(len(projectsToInstall))+" outdated projects.\n")
+  return projectsToInstall
 
+# Gets the latest version numbers of every outdated project
 def getNewVersions():
   result = subprocess.run(['composer','outdated','--format=json'], stdout=subprocess.PIPE, universal_newlines=True)
   composerOutdated = result.stdout
@@ -95,12 +94,26 @@ def getNewVersions():
   for project in json_object['installed']:
     n = project['name']
     v = project['latest']
-    if project == 'drupal/core':
-      projects['drupal/core-recommended'] = v
     projects[n] = v
 
   return projects
 
+# Acquires a list of outstanding Drupal security updates according to Drush
+def getSecurityUpdates():
+  result = subprocess.run(['drush','sec','--format=json'], stdout=subprocess.PIPE, universal_newlines=True)
+  composerOutdated = result.stdout
+
+  projects = {}
+  json_object = json.loads(composerOutdated)
+
+  for project in json_object:
+    n = json_object[project]['name']
+    v = json_object[project]['version']
+    projects[n] = v
+
+  return projects
+
+# Deletes things
 def purge():
   print('Purging ./composer.lock')
   subprocess.run(['rm','./composer.lock'])
