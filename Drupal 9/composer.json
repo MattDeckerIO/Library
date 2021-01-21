@@ -19,8 +19,8 @@
   "require": {
     "php": ">=7.2",
     "cweagans/composer-patches": "^1.6.5",
-    "drupal/core-composer-scaffold": "^9.0.0",
-    "drupal/recommended-project": "^9.0.0",
+    "drupal/core-recommended": "^9.1.0",
+    "drupal/recommended-project": "^9.1.0",
     "drush/drush": "^10.3"
   },
   "minimum-stability": "dev",
@@ -30,16 +30,12 @@
   },
   "scripts": {
     "pre-install-cmd": [
-      "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
     ],
     "pre-update-cmd": [
-      "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
     ],
     "post-install-cmd": [
-      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
     ],
     "post-update-cmd": [
-      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
     ]
   },
   "extra": {
