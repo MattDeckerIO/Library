@@ -1,6 +1,6 @@
 {
   "name": "drupal/projectname",
-  "description": "Drupal 8 Starterkit",
+  "description": "Drupal 9 Starterkit",
   "type": "project",
   "license": "GPL-2.0-or-later",
   "authors": [
@@ -72,8 +72,5 @@
     },
     "patches": {
     }
-  },
-  "require-dev": {
-    "drupal/devel": "^4.0"
   }
 }
