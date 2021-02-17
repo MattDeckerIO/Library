@@ -1,0 +1,11 @@
+version: "2.1"
+services:
+  # MailHog
+  # http://mail.<VIRTUAL_HOST>
+  mail:
+    extends:
+      file: ${HOME}/.docksal/stacks/services.yml
+      service: mail
+  cli:
+    image: ${COMPOSE_PROJECT_NAME_SAFE}_cli
+    build: services/cli
