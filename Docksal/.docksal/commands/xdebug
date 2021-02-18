@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+## https://docs.docksal.io/tools/xdebug/
+
+if [ $1 == "enable" ]; then
+  echo "*************************"
+  echo " Enabling Xdebug for PHP"
+  echo "*************************"
+  fin config set --env=local XDEBUG_ENABLED=1
+  fin project start
+elif [ $1 == "disable" ]; then
+
+  echo "**************************"
+  echo " Disabling Xdebug for PHP"
+  echo "**************************"
+  fin config set --env=local XDEBUG_ENABLED=0
+  fin project start
+else
+  echo "*****************************************************"
+  echo " Valid options for xdebug are 'enable' and 'disable'";
+  echo "*****************************************************"
+fi
+
+fin exec php -v | grep -i xdebug

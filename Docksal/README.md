@@ -49,6 +49,9 @@
   - `fin drush *command*` Runs a drush command. e.g. `fin drush cim -y`
   - `fin composer *command*` Runs composer commands e.g. `fin composer install`
   - `fin exec npm run *command*` Runs package.json commands e.g. `fin exec npm run build`
+- **Xdebug**
+  - `fin xdebug enable` Enables Xdebug for PHP
+  - `fin xdebug disable` Disables Xdebug for PHP
 
 
 ### Database connection variables
@@ -61,6 +64,8 @@
 
 ### Links
 [Docksal Help](http://docs.docksal.io/fin/fin-help/)
+
+[XDebug](https://docs.docksal.io/tools/xdebug/)
 
 Website: http://projectname.docksal
 
