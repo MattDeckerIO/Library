@@ -38,7 +38,8 @@
 ## Commands
 - `docksal` Initializes the docksal containers if they are not running.
 - **Project**
-   - `fin ps` See if the project for the current folder is running.
+   - `fin pl` List all running projects
+   - `fin ps` Detail status of the project for the current folder.
    - `fin start` Starts the project for the current folder.
    - `fin stop` Stops the project for the current folder.
 - **Database**
