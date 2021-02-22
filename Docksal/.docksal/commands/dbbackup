@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+result=${PWD##*/}
+now=$(date +"%Y%m%d-%H%M")
+fin db dump ./${result}-${now}_.sql
+ls -alh | grep -i '.sql'
