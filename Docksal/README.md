@@ -24,10 +24,14 @@
 
 ## Existing project with .docksal directory
   - Clone repository into project directory
-    - `cd ~/Sites/projectname`
-    - `git clone https://path-to-repo.git ./`
+    - `cd ~/Sites/`
+    - `git clone https://path-to-repo.git`
   - Start environment
     - `fin start`
+  - Import the database
+    - `fin db import filename.sql`
+  - Install components (if necessary)
+    - `fin composer install` or `fin sync` (see custom commands)
 
 ## Existing project without .docksal directory
 1. Copy the .docksal directory from this respository into the project root
