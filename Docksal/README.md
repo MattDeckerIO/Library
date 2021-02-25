@@ -33,11 +33,13 @@
   - Install components (if necessary)
     - `fin composer install` or `fin sync` (see custom commands)
 
-## Existing project without .docksal directory
+## Existing project without .docksal directory (Work in progress!)
 1. Copy the .docksal directory from this respository into the project root
-1. Start environment
-   - `fin init`
-1. ...
+1. Add settings.docksal.php
+1. Include settings.docksal.php in settings.php
+1. Add development.services.yml
+1. Commit the entire .docksal directory, settings.docksal.php, settings.php, and development.services.yml to git repository.
+1. Follow instructions for Existing project with .docksal directory.
 
 ## Commands
 - `docksal` Initializes the docksal containers if they are not running.
