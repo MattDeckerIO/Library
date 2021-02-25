@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+if [ $1 == "watch" ]; then
+  echo "***************************"
+  echo " Watching SASS for changes "
+  echo "***************************"
+  fin exec npm run watch
+elif [ $1 == "compile" ]; then
+  echo "****************"
+  echo " Compiling SASS "
+  echo "****************"
+  fin exec npm run compile
+else
+  echo "**************************************************"
+  echo " Valid options for sass are 'watch' and 'compile'";
+  echo "**************************************************"
+fi
