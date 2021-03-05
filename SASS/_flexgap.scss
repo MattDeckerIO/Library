@@ -1,0 +1,13 @@
+/// https://coryrylan.com/blog/css-gap-space-with-flexbox
+/// Interpolation https://sass-lang.com/documentation/interpolation
+
+/// @author Matt Decker <me@mattdecker.io>
+/// @version 20210305
+@mixin flexgap($gap: 1rem)
+{
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin: calc(-1 * #{$gap}) 0 0 calc(-1 * #{$gap});
+  width: calc(100% + #{$gap});
+  & > * { margin: #{$gap} 0 0 #{$gap}; }
+}
