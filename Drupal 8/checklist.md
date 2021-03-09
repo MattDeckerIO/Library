@@ -28,6 +28,7 @@
 |         | &check; |     | Status page does not show any misconfigurations
 |         | &check; |     | Favicon uploaded to theme folder and configured
 |         | &check; |     | All configuration stored in configuration management
+|         | &check; |     | Administrators are able to upload files via UI. (editor_file)
 
 
 ### SEO
@@ -89,4 +90,4 @@
 4. ...
 
 
-##### Checklist v20210105
+##### Checklist v20210309
