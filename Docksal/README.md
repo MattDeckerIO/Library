@@ -50,6 +50,7 @@
    - `fin stop` Stops the project for the current folder.
 - **Database**
   - `fin db dump filename.sql` Exports the database
+  - `fin db/backup` Exports the database with a better filename.
   - `fin db import filename.sql` Imports a database file.
   -  `zcat < filename.sql.gz | fin db import` Imports a compressed database file.
 - **CLI**
