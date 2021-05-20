@@ -81,7 +81,7 @@
 |         | &check; |     | Password Expiration: ```Expiration: 90  Complexity: 4 History: 24 Username: 1 Length: 12```
 |         | &check; |     | Force ALL passwords to change when policies are created or modified and prior to website launch.
 |         | &check; |     | 2FA applied to content administrator role and above if required
-|         | &check; |     | Flood protection: ```uid_only: false; ip_limit: 5; ip_window: 21600; user_limit: 5; user_window: 21600```
+|         | &check; |     | Flood protection: ```uid_only: false; ip_limit: 5; ip_window: 900; user_limit: 5; user_window: 900```
 |         | &check; |     | All file upload fields limited to: ```txt, pdf, doc, docx, xls, xlsx, ppt, pptx, jpg, jpeg, gif, png```
 
 1. Not applicable.
