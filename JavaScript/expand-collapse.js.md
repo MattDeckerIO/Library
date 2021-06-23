@@ -112,9 +112,9 @@ function expandCollapse(d, e, t, l)
   // Set chevron
   if (d)
   {
-    elem.append('<i class="expandCollapseChevron icon-chevron-down";" style="pointer-events: none;" ></i>');
+    elem.append('<i class="expandCollapseChevron icon-chevron-down" style="pointer-events: none;" ></i>');
   } else {
-    elem.append('<i class="expandCollapseChevron icon-chevron-up";" style="pointer-events: none;"></i>');
+    elem.append('<i class="expandCollapseChevron icon-chevron-up" style="pointer-events: none;"></i>');
   }
 
   // Set cursor
