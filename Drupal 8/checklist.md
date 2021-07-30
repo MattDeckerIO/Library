@@ -36,8 +36,6 @@
 |:-------:|:-------:|:-------:|-------
 |         | &check; |     | All pages have unique page titles
 |         | &check; |     | Google Analytics installed
-|         | &check; |     | Google Analytics verified from GA dashboard
-|         | &check; |     | Google Analytics only shows data from the prod hostname
 |         |         |     | **Pathauto**
 |         | &check; |     | Pattern created and applied to every content type and vocabulary
 |         | &check; |     | Default path pattern: ```[node:menu-link:parents:join-path]/[node:title]```
@@ -47,7 +45,6 @@
 |         | &check; |     | Open external links in a new window: Enabled
 |         |         |     | **Simple XML Sitemap**
 |         | &check; |     | Sitemap visible at /sitemap.xml
-|         | &check; |     | Sitemap submitted to Google Webmaster Tools
 
 
 ### Monitoring
@@ -60,7 +57,7 @@
 |         | &check; |     | Website log shows real IP addresses
 |         | &check; |     | Timestamp available at /health
 |         | &check; |     | ```log_stdout``` installed and enabled
-|         | &check; |     | External monitoring configured and checked.
+|         | &check; |     | External monitoring configured.
 
 
 ### Security
@@ -76,7 +73,7 @@
 |         | &check; |     | All elevated user accounts correlate to a single person
 |         | &check; |     | Commenting disabled unless otherwise specified
 |         | &check; |     | Devel disabled on production
-|         | &check; |     | Spam protection applied to all exposed forms. 
+|         | &check; |     | Spam protection applied to all exposed forms.
 |         | &check; |     | Roles: All roles that can create or edit or delete content
 |         | &check; |     | Password Expiration: ```Expiration: 90  Complexity: 4 History: 24 Username: 1 Length: 12```
 |         | &check; |     | Force ALL passwords to change when policies are created or modified and prior to website launch.
@@ -84,10 +81,23 @@
 |         | &check; |     | Flood protection: ```uid_only: false; ip_limit: 5; ip_window: 900; user_limit: 5; user_window: 900```
 |         | &check; |     | All file upload fields limited to: ```txt, pdf, doc, docx, xls, xlsx, ppt, pptx, jpg, jpeg, gif, png```
 
+
+### POST LAUNCH
+| Compliant | Non-Compliant | Notes | Configuration |
+|:-------:|:-------:|:-------:|-------
+|         |         |     | HTTP redirects to HTTPS.
+|         |         |     | Sitemap shows production domain as base url.
+|         |         |     | Sitemap submitted to Google Webmaster Tools.
+|         |         |     | External monitoring confirmed receiving data.
+|         |         |     | Google Analytics verified from GA dashboard.
+|         |         |     | Google Analytics only shows data from the prod hostname.
+|         |         |     | Website is able to send e-mails.
+|         |         |     | Broken link report generated.
+
 1. Not applicable.
 2. Reason why not compliant #1.
 3. Reason why not compliant #2.
 4. ...
 
 
-##### Checklist v20210309
+##### Checklist v20210716
