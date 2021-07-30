@@ -1,6 +1,7 @@
 {
   "name": "drupal/projectname",
   "description": "Drupal 9 Starterkit",
+  "version": "20210730",
   "type": "project",
   "license": "GPL-2.0-or-later",
   "authors": [
@@ -17,11 +18,10 @@
     }
   ],
   "require": {
-    "php": ">=7.2",
+    "php": ">=7.4",
     "cweagans/composer-patches": "^1.6.5",
-    "drupal/core-recommended": "^9.1.0",
-    "drupal/recommended-project": "^9.1.0",
-    "drush/drush": "^10.3"
+    "drupal/recommended-project": "^9.2.0",
+    "drush/drush": "^10.5"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
@@ -63,6 +63,11 @@
         "[project-root]/.gitignore":{
           "mode": "replace",
           "path": "./web/core/assets/scaffold/files/example.gitignore",
+          "overwrite": false
+        },
+        "[web-root]/.htaccess":{
+          "mode": "replace",
+          "path": "./docroot/core/assets/scaffold/files/htaccess",
           "overwrite": false
         },
         "[web-root]/sites/development.services.yml": false,
