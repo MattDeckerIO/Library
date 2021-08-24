@@ -9,3 +9,6 @@ services:
   cli:
     image: ${COMPOSE_PROJECT_NAME_SAFE}_cli
     build: services/cli
+    environment:
+      - COMPOSER_MEMORY_LIMIT=-1
+      - COMPOSER_PROCESS_TIMEOUT=20000
