@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+echo "============================================================="
+echo " WARNING This script is only for local environments. WARNING"
+echo "============================================================="
+
+echo "Set settings permissions..."
+chmod 644 $PROJECT_ROOT/$DOCROOT/sites/*.yml
+chmod 775 $PROJECT_ROOT/$DOCROOT/sites/default;
+chmod 644 $PROJECT_ROOT/$DOCROOT/sites/default/*.php;
+echo "Done!"
+
+echo "Set directory permissions..."
+find $PROJECT_ROOT/$DOCROOT -type d -exec chmod 755 '{}' \;
+echo "Done!"
+
+echo "Set file permissions..."
+find $PROJECT_ROOT/$DOCROOT -type f -exec chmod 644 '{}' \;
+echo "Done!"
+
+echo "Configure git to ignore permissions..."
+git config core.fileMode false;
+echo "Done!"
+
+echo "All Done!"

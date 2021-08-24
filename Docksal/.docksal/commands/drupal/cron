@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Drupal's cron won't trigger if the semaphore table
+# contains data. This command truncates the semaphore
+# table then triggers Drupal's cron.
+
+# Author: Matt Decker <mdecker@air.org>
+
+echo 'Triggering Drupal cron';
+fin drush sql:query "truncate table semaphore";
+fin drush cron
+echo 'Drupal cron complete';

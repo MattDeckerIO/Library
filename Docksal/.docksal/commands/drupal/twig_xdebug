@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+xdebug_status=$(fin exec php -v | grep -ic 'xdebug')
+
+if [ $1 == "enable" ]; then
+  fin composer require drupal/twig_xdebug;
+  fin drush en twig_xdebug -y;
+
+  if [ $xdebug_status == '0' ]; then
+    fin xdebug enable;
+  fi
+
+elif [ $1 == "disable" ]; then
+  echo 'This ONLY uninstalls twig_xdebug and does not turn off xdebug.';
+  fin drush pmu twig_xdebug -y;
+  fin composer remove drupal/twig_xdebug;
+else
+  echo "*********************************************************"
+  echo " Valid options for twig_xdebug are 'enable' and 'disable'";
+  echo "*********************************************************"
+fi
+exit
