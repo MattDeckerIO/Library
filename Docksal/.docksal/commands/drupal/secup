@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+PMS=$(
+  fin drush pm:security --fields=name --format=csv |
+  grep -v '\[warning\]' |
+  grep -v '\[notice\]' |
+  grep 'drupal/' |
+  sed "s/drupal\/core/drupal\/recommended-project/g"
+  2>&1
+);
+
+echo "Applying security updates to ${PMS}";
+
+fin db/backup
+fin composer require ${PMS} --update-with-dependencies;
+fin drush updb -y
+fin drush config:export -y
