@@ -23,9 +23,19 @@ elif [ $1 == "disable" ]; then
   else
     echo "Xdebug is not enabled."
   fi
+elif [ $1 == "status" ]; then
+  if [ $xdebug_status == '0' ]; then
+    echo "********************"
+    echo " Xdebug is disabled"
+    echo "********************"
+  elif [ $xdebug_status != '0' ]; then
+    echo "*******************"
+    echo " Xdebug is enabled"
+    echo "*******************"
+  fi
 else
-  echo "*****************************************************"
-  echo " Valid options for xdebug are 'enable' and 'disable'";
-  echo "*****************************************************"
+  echo "****************************************************************"
+  echo " Valid options for xdebug are 'enable', 'disable', and 'status'";
+  echo "****************************************************************"
 fi
 exit
