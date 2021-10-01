@@ -23,7 +23,7 @@
     "drupal/recommended-project": "^9.2.0",
     "drush/drush": "^10.5"
   },
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "prefer-stable": true,
   "config": {
     "sort-packages": true
