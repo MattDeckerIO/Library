@@ -2,5 +2,5 @@
 
 result=${PWD##*/}
 now=$(date +"%Y%m%d-%H%M")
-fin db dump ./${result}-${now}_.sql
+fin db dump ./${result}-${now}.sql
 ls -alh | grep -i '.sql'
