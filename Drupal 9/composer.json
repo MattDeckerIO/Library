@@ -34,10 +34,8 @@
     "pre-update-cmd": [
     ],
     "post-install-cmd": [
-      "@composer drupal-scaffold"
     ],
     "post-update-cmd": [
-      "@composer drupal-scaffold",
       "mkdir -p web/libraries/bootstrap",
       "cp -R vendor/twbs/bootstrap/dist web/libraries/bootstrap"
     ]
