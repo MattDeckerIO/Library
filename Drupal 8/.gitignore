@@ -1,11 +1,11 @@
 # Drupal 8 .gitignore
-> This file will ignore everything that should not be included in a Drupal 8
-> installation. It should be placed above the web folder. You may need to 
-> `git rm -r --cached <path>` to remove files from git if you are now excluding
-> files that were previously included.
-
-### .gitignore
-```bash
+# This file will ignore everything that should not be included in a Drupal 8
+# installation. It should be placed above the web folder. You may need to
+# `git rm -r --cached <path#` to remove files from git if you are now excluding
+# files that were previously included.
+#
+#
+#
 # This file contains default .gitignore rules. To use it, copy it to .gitignore,
 # and it will cause files like your settings.php and user-uploaded files to be
 # excluded from Git version control. This is a common strategy to avoid
@@ -69,4 +69,3 @@ README.txt
 INSTALL.txt
 .DS_Store
 example.*
-```
