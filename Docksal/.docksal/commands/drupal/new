@@ -49,7 +49,7 @@ for file in config/*/*bootstrap_barrio_subtheme.*; do mv $file ${file//bootstrap
 mv {_,}$CUSTOM_BARRIO.theme
 grep -Rl bootstrap_barrio_subtheme .|xargs sed -i '' -e "s/bootstrap_barrio_subtheme/$CUSTOM_BARRIO/"
 
-echo 'Enable the theme';
+echo 'Enabling the theme';
 fin drush then $CUSTOM_BARRIO;
 fin drush config-set system.theme default $CUSTOM_BARRIO -y;
 
