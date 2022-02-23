@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+fin project rm -f
+fin project start
+
+
+echo 'Checking .gitignore';
+if ! [ -f './.gitignore' ];
+then
+  echo 'Downloading .gitignore';
+  curl -O https://raw.githubusercontent.com/MattDeckerIO/Library/master/Drupal%208/.gitignore --output ./
+fi
+
+echo 'Downloading composer.json';
+if ! [ -f './composer.json' ];
+then
+  curl -O https://raw.githubusercontent.com/MattDeckerIO/Library/master/Drupal%209/composer.json
+fi
+
+echo 'Installing composer packages';
+fin composer install;
+
+echo 'Installing settings.php';
+curl https://raw.githubusercontent.com/MattDeckerIO/Library/master/Drupal%208/settings.php --create-dirs --output ./web/sites/default/settings.php
+curl https://raw.githubusercontent.com/MattDeckerIO/Library/master/Drupal%209/settings.docksal.php --create-dirs --output ./web/sites/default/settings.local.php
+
+echo 'Installing cache-busting services';
+curl https://raw.githubusercontent.com/MattDeckerIO/Library/master/Drupal%209/development.services.yml --create-dirs --output ./web/sites/development.services.yml
+
+echo 'Fix permissions';
+fin drupal/perms
+
+echo 'Configuring drupal';
+fin drush si -y --site-mail="noreply@$VIRTUAL_HOST" --site-name="$VIRTUAL_HOST";
+
+echo 'Installing Bootstrap Barrio';
+fin composer require drupal/bootstrap_barrio;
+
+echo 'Create the subtheme';
+echo 'What do you want to call the subtheme?';
+read CUSTOM_BARRIO;
+
+mkdir -p ./web/themes/custom
+cd ./web/themes/custom
+cp -r ../contrib/bootstrap_barrio/subtheme $CUSTOM_BARRIO
+cd $CUSTOM_BARRIO
+for file in *bootstrap_barrio_subtheme.*; do mv $file ${file//bootstrap_barrio_subtheme/$CUSTOM_BARRIO}; done
+for file in config/*/*bootstrap_barrio_subtheme.*; do mv $file ${file//bootstrap_barrio_subtheme/$CUSTOM_BARRIO}; done
+mv {_,}$CUSTOM_BARRIO.theme
+grep -Rl bootstrap_barrio_subtheme .|xargs sed -i '' -e "s/bootstrap_barrio_subtheme/$CUSTOM_BARRIO/"
+
+echo 'Enable the theme';
+fin drush then $CUSTOM_BARRIO;
+fin drush config-set system.theme default $CUSTOM_BARRIO -y;
+
+open "http://$VIRTUAL_HOST"
