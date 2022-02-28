@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+#-------------------------- Helper functions --------------------------------
+
+# Console colors
+red='\033[0;31m'
+green='\033[0;32m'
+green_bg='\033[42m'
+yellow='\033[1;33m'
+NC='\033[0m'
+
+echo-red () { echo -e "${red}$1${NC}"; }
+echo-green () { echo -e "${green}$1${NC}"; }
+echo-green-bg () { echo -e "${green_bg}$1${NC}"; }
+echo-yellow () { echo -e "${yellow}$1${NC}"; }
+
+#--------------------------- Execution --------------------------------------
+
+fin exec backstop test --config='backstop.config.js' $1
+echo -en "${green_bg} DONE! ${NC}"
+echo -e " Open ${yellow}${PROJECT_ROOT}/backstop_data/html_report/index.html${NC} in your browser to view the report. "
