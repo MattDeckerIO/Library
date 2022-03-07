@@ -1,19 +1,22 @@
 // Everything in this file defines the layout of content types and every display mode.
 
-body.node--type-article.node--view-mode-full
+body.node--type-article
 {
-  // Title
-  // Body
-}
+  &.node--view-mode-full
+  {
+    // Title
+    // Body
+  }
 
-body.node--type-article.node--view-mode-teaser
-{
-  // Title
-  // Body
-}
+  &.node--view-mode-teaser
+  {
+    // Title
+    // Body
+  }
 
-body.node--type-article.node--view-mode-card
-{
-  // Title
-  // Body
+  &.node--view-mode-card
+  {
+    // Title
+    // Body
+  }
 }
