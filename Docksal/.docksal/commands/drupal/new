@@ -2,7 +2,10 @@
 
 fin project rm -f
 fin project start
+echo 'Initializing a new Drupal website.';
 
+echo 'What do you want to call the subtheme?';
+read CUSTOM_BARRIO;
 
 echo 'Checking .gitignore';
 if ! [ -f './.gitignore' ];
@@ -18,7 +21,7 @@ then
 fi
 
 echo 'Installing composer packages';
-fin composer install;
+yes | fin composer install;
 
 echo 'Installing settings.php';
 curl https://raw.githubusercontent.com/MattDeckerIO/Library/master/Drupal%208/settings.php --create-dirs --output ./web/sites/default/settings.php
@@ -28,18 +31,15 @@ echo 'Installing cache-busting services';
 curl https://raw.githubusercontent.com/MattDeckerIO/Library/master/Drupal%209/development.services.yml --create-dirs --output ./web/sites/development.services.yml
 
 echo 'Fix permissions';
-fin drupal/perms
+yes | fin drupal/perms
 
 echo 'Configuring drupal';
-fin drush si -y --site-mail="noreply@$VIRTUAL_HOST" --site-name="$VIRTUAL_HOST";
+yes | fin drush si -y --site-mail="noreply@$VIRTUAL_HOST" --site-name="$VIRTUAL_HOST";
 
 echo 'Installing Bootstrap Barrio';
-fin composer require drupal/bootstrap_barrio;
+yes | fin composer require drupal/bootstrap_barrio;
 
-echo 'Create the subtheme';
-echo 'What do you want to call the subtheme?';
-read CUSTOM_BARRIO;
-
+echo 'Creating the subtheme';
 mkdir -p ./web/themes/custom
 cd ./web/themes/custom
 cp -r ../contrib/bootstrap_barrio/subtheme $CUSTOM_BARRIO
