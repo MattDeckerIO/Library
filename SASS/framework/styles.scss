@@ -1,10 +1,10 @@
 // Imports
-@import url("https://use.fontawesome.com/releases/v5.0.8/css/all.css");
+@import url("https://use.fontawesome.com/releases/v5.15.1/css/all.css");
 
 // Mixins
 @import 'vars';
 @import 'mixins/utilities';
-@import 'mixins/responsive';
+@import 'mixins/include-media';
 
 // Pages
 @import 'pages/home';
