@@ -30,14 +30,11 @@ curl https://raw.githubusercontent.com/MattDeckerIO/Library/master/Drupal%209/se
 echo 'Installing cache-busting services';
 curl https://raw.githubusercontent.com/MattDeckerIO/Library/master/Drupal%209/development.services.yml --create-dirs --output ./web/sites/development.services.yml
 
-echo 'Fix permissions';
-yes | fin drupal/perms
+# echo 'Fix permissions';
+# yes | fin drupal/perms
 
 echo 'Configuring drupal';
 yes | fin drush si -y --site-mail="noreply@$VIRTUAL_HOST" --site-name="$VIRTUAL_HOST";
-
-echo 'Installing Bootstrap Barrio';
-yes | fin composer require drupal/bootstrap_barrio;
 
 echo 'Creating the subtheme';
 mkdir -p ./web/themes/custom
