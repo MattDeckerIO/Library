@@ -4,7 +4,7 @@ fin project rm -f
 fin project start
 echo 'Initializing a new Drupal website.';
 
-echo 'What do you want to call the subtheme?';
+echo 'What do you want to call the subtheme? (Must contain no dashes)';
 read CUSTOM_BARRIO;
 
 echo 'Checking .gitignore';
