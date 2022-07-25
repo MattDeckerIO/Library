@@ -27,7 +27,7 @@
 |         | &check; |     | Temporary directory set to /tmp
 |         | &check; |     | Status page does not show any misconfigurations
 |         | &check; |     | Favicon uploaded to theme folder and configured
-|         | &check; |     | All configuration stored in configuration management
+|         | &check; |     | No overridden configuration in configuration management
 |         | &check; |     | Administrators are able to upload files via UI. (editor_file)
 
 
@@ -57,6 +57,7 @@
 |         | &check; |     | Website log shows real IP addresses
 |         | &check; |     | Timestamp available at /health
 |         | &check; |     | ```log_stdout``` installed and enabled
+|         | &check; |     | Enable syslog with configuration: <domain_name>_drupal_9
 |         | &check; |     | External monitoring configured.
 
 
@@ -74,8 +75,8 @@
 |         | &check; |     | Commenting disabled unless otherwise specified
 |         | &check; |     | Devel disabled on production
 |         | &check; |     | Spam protection applied to all exposed forms.
-|         | &check; |     | Roles: All roles that can create or edit or delete content
-|         | &check; |     | Password Expiration: ```Expiration: 90  Complexity: 4 History: 24 Username: 1 Length: 12```
+|         | &check; |     | Password Policy Roles: All roles that can create or edit or delete content
+|         | &check; |     | Password Policy Expiration: ```Expiration: 90  Complexity: 4 History: 24 Username: 1 Length: 12```
 |         | &check; |     | Force ALL passwords to change when policies are created or modified and prior to website launch.
 |         | &check; |     | 2FA applied to content administrator role and above if required
 |         | &check; |     | Flood protection: ```uid_only: false; ip_limit: 5; ip_window: 900; user_limit: 5; user_window: 900```
@@ -100,4 +101,4 @@
 4. ...
 
 
-##### Checklist v20210716
+##### Checklist v20220725
