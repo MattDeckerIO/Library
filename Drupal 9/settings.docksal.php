@@ -31,3 +31,5 @@ $config['system.logging']['error_level'] = 'verbose';
 $config['google_analytics.settings']['account'] = 'UA-0000000-00';
 
 $config['shield.settings']['credentials']['shield']['user'] = NULL;
+
+$config['system.mail']['interface']['default'] = 'php_mail';
