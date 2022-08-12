@@ -25,6 +25,6 @@
 ```php
   // Rturns an array of TIDs e.g. [0 => ['target_id' => ##], 1 => ['target_id'] => ##]
   // This array then be passed into Term::loadMultiple().
-  use Drupal\taxonomy\Entity\Term;
+  use Drupal\taxonomy\Entity\Term; // If using Term::loadMultiple()
   $entity->get('field_machine_name')->getValue();
 ```
