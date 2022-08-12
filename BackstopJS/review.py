@@ -7,20 +7,22 @@
 # ================================================
 
 import re
-import webbrowser
 import time
 import os
 
-env = ['test','prod']
+browser = 'Google Chrome'
+
+# env = ['test','prod']
 # env = ['prod']
-# env = ['test']
-testing = False
+env = ['test']
+
+# testing = False
+testing = True
 
 # ================================================
 
 file = open('backstop.config.js', 'r')
 Lines = file.readlines()
-
 
 if 'test' in env:
   print('Capturing test')
@@ -46,9 +48,9 @@ if 'test' in env:
       url = url.replace("${testURL}", url_test)
       print('Test: '+url)
       if (testDomain == 0):
-        os.system('open --new -a "Brave Browser" --args --new-window '+url)
+        os.system('open --new -a "'+browser+'" --args --new-window '+url)
       else:
-        os.system('open --new -a "Brave Browser" --args '+url)
+        os.system('open --new -a "'+browser+'" --args '+url)
         time.sleep(0.2)
       testDomain += 1
 
@@ -70,8 +72,8 @@ if 'prod' in env:
       url = re.search("`.+?`", l).group().strip('`')
       print('Production: '+url)
       if (prodDomain == 0):
-        os.system('open --new -a "Brave Browser" --args --new-window '+url)
+        os.system('open --new -a "'+browser+'" --args --new-window '+url)
       else:
-        os.system('open --new -a "Brave Browser" --args '+url)
+        os.system('open --new -a "'+browser+'" --args '+url)
       time.sleep(0.2)
       prodDomain += 1
