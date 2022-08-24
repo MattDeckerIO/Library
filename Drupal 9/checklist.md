@@ -94,6 +94,7 @@
 |         |         |     | Google Analytics only shows data from the prod hostname.
 |         |         |     | Website is able to send e-mails.
 |         |         |     | Broken link report generated.
+|         |         |     | Begin billing client for hosting.
 
 1. Not applicable.
 2. Reason why not compliant #1.
@@ -101,4 +102,4 @@
 4. ...
 
 
-##### Checklist v20220725
+##### Checklist v20220824
