@@ -1,17 +1,18 @@
 # Launches a defined list of URLs in browser windows and tabs for testing.
 # @author Matt Decker <me@mattdecker.io>
 
+# Usage: review.py env env env
+# e.g.   review.py local prod
+
 # Imports
 # ================================================
 import time
 import os
+import sys
 
 # Vars
 # ================================================
 browser = 'Brave Browser'
-file = 'review.json'
-env = ['local','prod']
-testing = True
 
 # Test Cases
 # ================================================
@@ -28,7 +29,22 @@ tests = {
 
 # Functionality
 # ================================================
-for e in env:
+
+# Collect passed arguments
+args = sys.argv
+args.pop(0)
+if (len(args) == 0):
+  print('No environments provided')
+  exit()
+
+print('Testing '+', '.join(args))
+
+for e in args:
+  # Test if passed arguments are valid.
+  if e not in tests['envs']:
+    print(e+' is not a valid environment name.')
+    print('Available names: '+', '.join(tests['envs'].keys()))
+    continue
   base = tests['envs'][e]
   first = True
   print('Opening links for '+e+' at '+base)
