@@ -9,11 +9,13 @@ use Drupal\Core\Url;
 
 class AdminLocker implements EventSubscriberInterface {
 
-  private $paths = [];
+  private $paths_block = [];
+  private $paths_allow = [];
 
   public function __construct()
   {
-    $this->setPaths();
+    $this->setBlockPaths();
+    $this->setAllowPaths();
   }
 
   /**
@@ -23,7 +25,11 @@ class AdminLocker implements EventSubscriberInterface {
   public function checkAccess(GetResponseEvent $event) {
     if (!\Drupal::currentUser()->isAuthenticated()) { return; } // Only block authenticated users.
     /** if (\Drupal::currentUser()->hasPermission('bypass adminlocker')) { return; } **/
-    $deny = $this->denyAccess($this->getCurrentPath(), $this->getPaths());
+
+    $deny = $this->denyAccess($this->getCurrentPath(), $this->getAllowPaths());
+    if ($deny) { return; }
+
+    $deny = $this->denyAccess($this->getCurrentPath(), $this->getBlockPaths());
     if ($deny) { $this->exit(); }
   }
 
@@ -38,25 +44,49 @@ class AdminLocker implements EventSubscriberInterface {
   }
 
   /**
-   * Get the value of paths
+   * Get the value of allowed paths
    */
-  private function getPaths()
+  private function getAllowPaths()
   {
-    return $this->paths;
+    return $this->paths_allow;
   }
 
   /**
-   * Set the value of paths
+   * Get the value of blocked paths
+   */
+  private function getBlockPaths()
+  {
+    return $this->paths_block;
+  }
+
+  /**
+   * Set the value of blocked paths
    *
    * @return  self
    */
-  private function setPaths()
+  private function setBlockPaths()
   {
-    $config =  \Drupal::config('adminlocker.settings')->get('adminlocker.adminlocker_settings');
+    $config =  \Drupal::config('adminlocker.settings')->get('adminlocker.adminlocker_block');
     $paths = explode(PHP_EOL, $config);
     $paths = array_map('trim', $paths);
 
-    $this->paths = $paths;
+    $this->paths_block = $paths;
+
+    return $this;
+  }
+
+  /**
+   * Set the value of allowed paths
+   *
+   * @return  self
+   */
+  private function setAllowPaths()
+  {
+    $config =  \Drupal::config('adminlocker.settings')->get('adminlocker.adminlocker_allow');
+    $paths = explode(PHP_EOL, $config);
+    $paths = array_map('trim', $paths);
+
+    $this->paths_allow = $paths;
 
     return $this;
   }

@@ -29,12 +29,21 @@ class AdminLockerForm extends ConfigFormBase {
     $config = $this->config('adminlocker.settings');
 
     // Source text field.
-    $form['adminlocker_settings'] = [
+    $form['adminlocker_block'] = [
       '#type' => 'textarea',
       '#rows' => 20,
-      '#title' => $this->t('AdminLocker settings'),
-      '#default_value' => $config->get('adminlocker.adminlocker_settings'),
-      '#description' => $this->t('URLs that should be blocked for non-admins. Enter one path per line. Paths start with `/`.'),
+      '#title' => $this->t('AdminLocker blocked paths'),
+      '#default_value' => $config->get('adminlocker.adminlocker_block'),
+      '#description' => $this->t('URLs that should be blocked for admins. Enter one path per line. Paths start with `/`.'),
+    ];
+
+    // Source text field.
+    $form['adminlocker_allow'] = [
+      '#type' => 'textarea',
+      '#rows' => 20,
+      '#title' => $this->t('AdminLocker allowed paths'),
+      '#default_value' => $config->get('adminlocker.adminlocker_allow'),
+      '#description' => $this->t('URLs that should be allowed for admins. These paths override blocked paths. Enter one path per line. Paths start with `/`.'),
     ];
     return $form;
   }
@@ -51,7 +60,8 @@ class AdminLockerForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $config = $this->config('adminlocker.settings');
-    $config->set('adminlocker.adminlocker_settings', $form_state->getValue('adminlocker_settings'));
+    $config->set('adminlocker.adminlocker_block', $form_state->getValue('adminlocker_block'));
+    $config->set('adminlocker.adminlocker_allow', $form_state->getValue('adminlocker_allow'));
     $config->save();
     return parent::submitForm($form, $form_state);
   }

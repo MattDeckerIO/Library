@@ -5,6 +5,9 @@ adminlocker.settings:
     adminlocker:
       type: mapping
       mapping:
-        adminlocker_settings:
+        adminlocker_block:
           type: longtext
-          label: 'AdminLocker settings'
+          label: 'AdminLocker blocklist'
+        adminlocker_allow:
+          type: longtext
+          label: 'AdminLocker allowlist'
