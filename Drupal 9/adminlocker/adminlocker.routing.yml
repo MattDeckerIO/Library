@@ -1,0 +1,7 @@
+adminlocker.form:
+  path: '/admin/adminlocker'
+  defaults:
+    _form: '\Drupal\adminlocker\Form\AdminLockerForm'
+    _title: 'AdminLocker settings'
+  requirements:
+    _permission: 'administer adminlocker'

@@ -1,0 +1,5 @@
+adminlocker.form:
+  title: 'AdminLocker'
+  description: 'Configure settings for the AdminLocker module.'
+  route_name: adminlocker.form
+  parent: 'system.admin_config_system'

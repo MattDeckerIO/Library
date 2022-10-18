@@ -1,0 +1,5 @@
+name: AdminLocker
+description: Custom module with configurations.
+package: Custom
+type: module
+core_version_requirement: ^9

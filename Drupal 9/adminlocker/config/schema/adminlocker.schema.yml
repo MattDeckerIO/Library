@@ -1,0 +1,10 @@
+adminlocker.settings:
+  type: config_object
+  label: 'AdminLocker settings'
+  mapping:
+    adminlocker:
+      type: mapping
+      mapping:
+        adminlocker_settings:
+          type: longtext
+          label: 'AdminLocker settings'

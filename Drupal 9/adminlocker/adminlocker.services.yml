@@ -1,0 +1,5 @@
+services:
+  adminlocker:
+    class: Drupal\adminlocker\EventSubscriber\AdminLocker
+    tags:
+      - { name: event_subscriber }

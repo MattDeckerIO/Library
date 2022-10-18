@@ -1,0 +1,6 @@
+administer adminlocker:
+  title: 'Administer AdminLocker'
+  description: 'Configure locked admin pages.'
+bypass adminlocker:
+  title: 'Bypass AdminLocker (unused)'
+  description: 'Bypass locked admin pages.'
