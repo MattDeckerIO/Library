@@ -1,7 +1,14 @@
 adminlocker.form:
-  path: '/admin/adminlocker'
+  path: '/admin/adminlocker/edit'
   defaults:
     _form: '\Drupal\adminlocker\Form\AdminLockerForm'
     _title: 'AdminLocker settings'
   requirements:
     _permission: 'administer adminlocker'
+adminlocker.view:
+  path: '/admin/adminlocker'
+  defaults:
+    _controller: '\Drupal\adminlocker\Controller\AdminLockerController::content'
+    _title: 'AdminLocker view settings'
+  requirements:
+    _permission: 'administer content'
