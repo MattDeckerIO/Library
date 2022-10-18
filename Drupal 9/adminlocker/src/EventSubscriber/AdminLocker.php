@@ -3,8 +3,10 @@ namespace Drupal\adminlocker\EventSubscriber;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Drupal\Core\Url;
 
 class AdminLocker implements EventSubscriberInterface {
@@ -22,15 +24,16 @@ class AdminLocker implements EventSubscriberInterface {
   * Redirect pattern based url
   * @param GetResponseEvent $event
   */
-  public function checkAccess(GetResponseEvent $event) {
+  public function checkAccess(FilterResponseEvent $event) {
     if (!\Drupal::currentUser()->isAuthenticated()) { return; } // Only block authenticated users.
+
     /** if (\Drupal::currentUser()->hasPermission('bypass adminlocker')) { return; } **/
 
     $deny = $this->denyAccess($this->getCurrentPath(), $this->getAllowPaths());
     if ($deny) { return; }
 
     $deny = $this->denyAccess($this->getCurrentPath(), $this->getBlockPaths());
-    if ($deny) { $this->exit(); }
+    if ($deny) { $this->exit($event); }
   }
 
   /**
@@ -39,7 +42,7 @@ class AdminLocker implements EventSubscriberInterface {
   * @return array Event names to listen to (key) and methods to call (value)
   */
   public static function getSubscribedEvents() {
-    $events[KernelEvents::REQUEST][] = ['checkAccess'];
+    $events[KernelEvents::RESPONSE][] = ['checkAccess'];
     return $events;
   }
 
@@ -97,12 +100,11 @@ class AdminLocker implements EventSubscriberInterface {
     return $request->server->get('REQUEST_URI', null);
   }
 
-  private function exit()
+  private function exit($e)
   {
-    $url = Url::fromRoute('system.403');
-    $response = new RedirectResponse($url->toString());
-    $response->send();
-    exit();
+    if ($e->getRequestType() === HttpKernelInterface::MASTER_REQUEST) {
+      throw new AccessDeniedHttpException();
+    }
   }
 
   /**
