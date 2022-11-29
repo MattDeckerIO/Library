@@ -12,3 +12,13 @@ services:
     environment:
       - COMPOSER_MEMORY_LIMIT=-1
       - COMPOSER_PROCESS_TIMEOUT=20000
+  # PHPMyAdmin http://pma.<VIRTUAL_HOST>
+  pma:
+    hostname: pma
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_HOST=db
+      - PMA_USER=root
+      - PMA_PASSWORD=root
+    labels:
+      - io.docksal.virtual-host=pma.${VIRTUAL_HOST}
