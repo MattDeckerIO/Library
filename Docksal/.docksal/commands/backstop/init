@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-curl -O https://raw.githubusercontent.com/MattDeckerIO/Library/master/BackstopJS/backstop.config.js
