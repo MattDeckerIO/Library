@@ -1,0 +1,83 @@
+{
+  "name": "drupal/projectname",
+  "description": "Drupal 10 Starterkit",
+  "version": "20230202",
+  "type": "project",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Your Name",
+      "email": "yourname@domain.com",
+      "role": "Galactic Viceroy of Cloud Alchemy"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    }
+  ],
+  "require": {
+    "php": ">=8.1",
+    "cweagans/composer-patches": "^1.6.5",
+    "drupal/bootstrap_barrio": "^5.5",
+    "drupal/recommended-project": "^10.0",
+    "drush/drush": "^11.0"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "cweagans/composer-patches": true,
+      "drupal/core-project-message": true,
+      "drupal/core-composer-scaffold": true,
+      "composer/installers": true
+    }
+  },
+  "scripts": {
+    "pre-install-cmd": [ ],
+    "pre-update-cmd": [ ],
+    "post-install-cmd": [ ],
+    "post-update-cmd": [ ]
+  },
+  "extra": {
+    "composer-exit-on-patch-failure": true,
+    "patchLevel": {
+      "drupal/core": "-p2"
+    },
+    "installer-paths": {
+      "web/core": ["type:drupal-core"],
+      "web/libraries/{$name}": ["type:drupal-library"],
+      "web/modules/contrib/{$name}": ["type:drupal-module"],
+      "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+      "web/themes/contrib/{$name}": ["type:drupal-theme"],
+      "drush/{$name}": ["type:drupal-drush"],
+      "modules/custom/{$name}": ["type:drupal-custom-module"],
+      "themes/custom/{$name}": ["type:drupal-custom-theme"]
+    },
+    "drupal-scaffold": {
+      "omit-defaults": true,
+      "locations": {
+        "project-root": "./",
+        "web-root": "./web"
+        },
+      "file-mapping": {
+        "[project-root]/.gitignore":{
+          "mode": "replace",
+          "path": "./web/core/assets/scaffold/files/example.gitignore",
+          "overwrite": false
+        },
+        "[web-root]/.htaccess":{
+          "mode": "replace",
+          "path": "./web/core/assets/scaffold/files/htaccess",
+          "overwrite": false
+        },
+        "[web-root]/sites/development.services.yml": false,
+        "[web-root]/sites/default/default.services.yml": false,
+        "[web-root]/sites/default/default.settings.php": false
+      }
+    },
+    "patches": { }
+  }
+}
