@@ -1,7 +1,24 @@
-var testURL = 'http://'+process.env.VIRTUAL_HOST; // Local
-// var testURL = 'https://dev.domain.com'; // Development
-// var testURL = 'https://stg.domain.com'; // Staging
-// var testURL = 'https://www.domain.com'; // Production
+// USAGE:
+// backstop test --config='./backstop.config.js' --env=dev
+// backstop reference --config='./backstop.config.js'
+
+var envs = {
+  'lcl' : 'http://local.domain.com',
+  'dev' : 'https://user:pass@dev.domain.com',
+  'stg' : 'https://user:pass@stg.domain.com',
+  'prd' : 'https://www.domain.com'
+}
+
+var env = 'prd';
+var argv = process.argv.slice(2);
+var testURL = envs[env];
+
+argv.forEach(function (e) {
+  var dat = e.split('=');
+  if (dat.length == 2 && dat[0] == '--env') { env = dat[1]; }
+});
+
+if (env && envs[env] !== undefined) { testURL = envs[env] }
 
 module.exports = {
   "id": "backstop_default",
@@ -26,8 +43,8 @@ module.exports = {
     {
       "label": "Home",
       "cookiePath": "backstop_data/engine_scripts/cookies.json",
-      "url": `${testURL}/`,
-      "referenceUrl": `https://www.domain.com`,
+      "url": '${testURL}/',
+      "referenceUrl": 'https://www.domain.com',
       "delay": 2500
     },
   ],
