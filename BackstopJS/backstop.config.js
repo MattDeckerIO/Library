@@ -1,3 +1,8 @@
+// INSTALLATION:
+// backstop init
+// Enter environment domains and scenarios.
+// Put cookie authentication data into /backstop_data/engine_scripts/cookies.json
+
 // USAGE:
 // backstop test --config='./backstop.config.js' --env=dev
 // backstop reference --config='./backstop.config.js'
@@ -39,6 +44,8 @@ module.exports = {
       "height": 1080
     }
   ],
+  "onBeforeScript": "puppet/onBefore.js",
+  "onReadyScript": "puppet/onReady.js",
   "scenarios": [
     {
       "label": "Home",
