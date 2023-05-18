@@ -100,10 +100,10 @@
         const accordionWrapper = this.shadowRoot.querySelector('.accordion');
         const ariaState = accordionWrapper.getAttribute('aria-expanded');
         accordionWrapper.setAttribute('aria-expanded',
-          !ariaState            ? 'true' : // First click
-          ariaState === 'false'  ? 'true' : // Open
-          ariaState === 'true' ? 'false'  : // Close
-          'true');                                            // Fallback
+          !ariaState             ? 'true'  : // First click
+          ariaState === 'false'  ? 'true'  : // Open
+          ariaState === 'true'   ? 'false' : // Close
+          'true');                           // Fallback
       }
 
       // Get the initial state, closed by default
