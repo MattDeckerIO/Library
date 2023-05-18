@@ -53,15 +53,7 @@
       render() {
         const headerSlot = this.querySelector('div[slot="header"]');
         const contentSlot = this.querySelector('div[slot="content"]');
-
-        // Default State
-        let ariaExpanded = 'false';
-        let display = 'none';
-        if (this.getAttribute('default') === 'open')
-        {
-          ariaExpanded = 'true';
-          display = 'block';
-        }
+        let [ariaExpanded, display] = this.getInitialState();
 
         const template = `
           <style>
@@ -112,6 +104,21 @@
           ariaState === 'false'  ? 'true' : // Open
           ariaState === 'true' ? 'false'  : // Close
           'true');                                            // Fallback
+      }
+
+      // Get the initial state, closed by default
+      // e.g. default='open'
+      getInitialState()
+      {
+        // Default State
+        let ariaExpanded = 'false';
+        let display = 'none';
+        if (this.getAttribute('default') === 'open')
+        {
+          ariaExpanded = 'true';
+          display = 'block';
+        }
+        return [ariaExpanded, display];
       }
     }
 
