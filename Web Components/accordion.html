@@ -73,7 +73,7 @@
             }
           </style>
           <div class="accordion" aria-expanded="false">
-            <div class="accordion-header">${headerSlot.innerHTML}</div>
+            <div class="accordion-header" tabindex="0">${headerSlot.innerHTML}</div>
             <div class="accordion-body">${contentSlot.innerHTML}</div>
           </div>
         `;
@@ -83,7 +83,8 @@
 
       addEventListeners() {
         const accordionHeader = this.shadowRoot.querySelector('.accordion-header');
-        accordionHeader.addEventListener('click', this.toggleAccordion.bind(this));
+        accordionHeader.addEventListener('keypress', this.toggleAccordion.bind(this));
+        accordionHeader.addEventListener('click',    this.toggleAccordion.bind(this));
       }
 
       toggleAccordion() {
