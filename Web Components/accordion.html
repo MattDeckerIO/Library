@@ -17,10 +17,10 @@
   </style>
 </head>
 <body>
-  <component-accordion>
+  <component-accordion default='open'>
     <div slot="header">Section 1</div>
     <div slot="content">
-      <p>Content for Section 1</p>
+      <p>Content for Section 1. Open by default</p>
     </div>
   </component-accordion>
 
@@ -54,6 +54,15 @@
         const headerSlot = this.querySelector('div[slot="header"]');
         const contentSlot = this.querySelector('div[slot="content"]');
 
+        // Default State
+        let ariaExpanded = 'false';
+        let display = 'none';
+        if (this.getAttribute('default') === 'open')
+        {
+          ariaExpanded = 'true';
+          display = 'block';
+        }
+
         const template = `
           <style>
             .accordion {
@@ -68,13 +77,12 @@
             }
 
             .accordion .accordion-body {
-              display: none;
               padding: 10px;
             }
           </style>
-          <div class="accordion" aria-expanded="false">
+          <div class="accordion" aria-expanded="${ariaExpanded}">
             <div class="accordion-header" tabindex="0">${headerSlot.innerHTML}</div>
-            <div class="accordion-body">${contentSlot.innerHTML}</div>
+            <div class="accordion-body" style="display: ${display}">${contentSlot.innerHTML}</div>
           </div>
         `;
 
