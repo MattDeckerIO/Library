@@ -24,6 +24,7 @@ data = str(soup) # Write modifications to the original data.
 ```
 
 #### Creating a new XML Tag from an old tag
+> To preserve HTML wrapped in <![CDATA[ set the BeautiulSoup second argument to html.parser and get the value of the tag with .string
 ```
 rows = 0
 
