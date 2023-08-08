@@ -10,3 +10,8 @@ RUN \
 
 # Fix npm
 RUN npm i -gs npm sass
+
+# Disable xdebug when running CLI commands.
+RUN touch /home/docker/.bash_aliases
+RUN echo -e 'alias drush='XDEBUG_MODE=off drush'' >> /home/docker/.bash_aliases
+RUN echo -e 'alias composer='XDEBUG_MODE=off composer'' >> /home/docker/.bash_aliases
