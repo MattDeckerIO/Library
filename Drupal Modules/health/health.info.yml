@@ -3,4 +3,4 @@ description: 'Health check to confirm application availability'
 package: 'Performance and scalability'
 core: 8.x
 type: module
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^8 || ^9 || ^10
