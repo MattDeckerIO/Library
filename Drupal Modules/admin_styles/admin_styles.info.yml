@@ -1,0 +1,5 @@
+name: Admin Styles
+type: module
+description: 'Adds custom CSS to admin theme.'
+package: Custom
+core_version_requirement: ^9 || ^10

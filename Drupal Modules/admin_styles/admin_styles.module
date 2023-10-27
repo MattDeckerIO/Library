@@ -1,0 +1,58 @@
+<?php
+
+/**
+ * Injects custom CSS styles into the Drupal admin theme.
+ *
+ * Implements hook_library_info_build().
+ */
+function admin_styles_library_info_build() {
+  $libraries['styles'] = [
+    'css' => [
+      'theme' => [
+        'css/styles.css' => [],
+      ],
+    ],
+  ];
+  return $libraries;
+}
+
+/**
+ * Attach the stylesheet to the admin theme.
+ *
+ * Implements hook_page_attachments().
+ */
+function admin_styles_page_attachments(array &$page) {
+  if (isAdminRoute() && isAdminThemeActive()())
+  {
+    $page['#attached']['library'][] = 'admin_styles/styles';
+  }
+}
+
+//
+/**
+ * Is this an admin page?
+ *
+ * @return boolean True if is an admin route
+ */
+function isAdminRoute()
+{
+  return \Drupal::service('router.admin_context')->isAdminRoute();
+}
+
+/**
+ * Is the admin theme active?
+ *
+ * @return boolean True if is an admin theme is active.
+ */
+function isAdminThemeActive()
+{
+  // Get the active theme name.
+  $theme_active = \Drupal::theme()->getActiveTheme()->getName();
+
+  // Get the admin theme name.
+  $theme_admin_obj = \Drupal::config('system.theme')->get('admin');
+  $theme_admin = \Drupal::service('theme_handler')->getName($theme_admin_obj);
+
+  // Returns boolean
+  return ($theme_active === $theme_admin);
+}
