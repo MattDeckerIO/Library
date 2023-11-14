@@ -1,5 +1,5 @@
 # Disable Drupal 8 Caching
-> This this configuration disables most caching to speed up development
+> This configuration disables most caching to speed up development
 > and ensure what is seen on the screen is actually the code and not the cache.
 
 #### Ensure you are using the custom settings.php so that settings.local.php is loaded.
