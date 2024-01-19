@@ -40,6 +40,17 @@
 
   <script>
     class Accordion extends HTMLElement {
+
+      indicatorOpen =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+        </svg>`;
+
+      indicatorClosed =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"/>
+        </svg>`;
+
       constructor() {
         super();
         this.attachShadow({ mode: 'open' });
@@ -53,28 +64,42 @@
       render() {
         const headerSlot = this.querySelector('div[slot="header"]');
         const contentSlot = this.querySelector('div[slot="content"]');
-        let [ariaExpanded, display] = this.getInitialState();
+        let [ariaExpanded, display, indicator] = this.getInitialState();
 
         const template = `
           <style>
             .accordion {
               border: 1px solid #ddd;
               margin-bottom: 15px;
+              width: 100%;
             }
 
             .accordion .accordion-header {
               background-color: #f5f5f5;
               padding: 10px;
               cursor: pointer;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
             }
 
             .accordion .accordion-body {
               padding: 10px;
             }
+
+            .accordion .indicator {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+            }
           </style>
-          <div class="accordion" aria-expanded="${ariaExpanded}">
-            <div class="accordion-header" tabindex="0">${headerSlot.innerHTML}</div>
-            <div class="accordion-body" style="display: ${display}">${contentSlot.innerHTML}</div>
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+          <div class="accordion" part="accordion" aria-expanded="${ariaExpanded}">
+            <div class="accordion-header" part="header" tabindex="0">
+              ${headerSlot.textContent}
+              <div class='indicator' part='indicator'>${indicator}</div>
+            </div>
+            <div class="accordion-body" part="content" style="display: ${display}">${contentSlot.textContent}</div>
           </div>
         `;
 
@@ -104,6 +129,15 @@
           ariaState === 'false'  ? 'true'  : // Open
           ariaState === 'true'   ? 'false' : // Close
           'true');                           // Fallback
+
+          // Toggle Indicator
+          const indicator = this.shadowRoot.querySelector('.indicator');
+          if (ariaState === 'true')
+          {
+            indicator.innerHTML = this.indicatorClosed;
+          } else {
+            indicator.innerHTML = this.indicatorOpen;
+          }
       }
 
       // Get the initial state, closed by default
@@ -113,12 +147,14 @@
         // Default State
         let ariaExpanded = 'false';
         let display = 'none';
+        let indicator = this.indicatorClosed;
         if (this.getAttribute('default') === 'open')
         {
           ariaExpanded = 'true';
           display = 'block';
+          indicator = this.indicatorOpen;
         }
-        return [ariaExpanded, display];
+        return [ariaExpanded, display, indicator];
       }
     }
 
