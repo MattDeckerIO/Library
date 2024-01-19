@@ -59,12 +59,15 @@
       connectedCallback() {
         this.render();
         this.addEventListeners();
+        this.querySelectorAll('*')?.forEach(e => e.remove());
       }
 
       render() {
-        const headerSlot = this.querySelector('div[slot="header"]');
-        const contentSlot = this.querySelector('div[slot="content"]');
+        const headerSlot = this.querySelector('div[slot="header"]') ?? null;
+        const contentSlot = this.querySelector('div[slot="content"]') ?? null;
         let [ariaExpanded, display, indicator] = this.getInitialState();
+
+        if (!headerSlot || !contentSlot) { return; }
 
         const template = `
           <style>
@@ -107,6 +110,7 @@
 
       addEventListeners() {
         const accordionHeader = this.shadowRoot.querySelector('.accordion-header');
+        if (!accordionHeader) { return; }
         accordionHeader.addEventListener('keypress', this.toggleAccordion.bind(this));
         accordionHeader.addEventListener('click',    this.toggleAccordion.bind(this));
       }
