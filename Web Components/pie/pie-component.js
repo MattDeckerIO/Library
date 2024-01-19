@@ -6,6 +6,8 @@ class PieComponent extends HTMLElement {
   chart_max;
   chart_val;
   chart_remainder;
+  color = 'aqua';
+  spacer = 'white';
 
   constructor() {
     super();
@@ -24,7 +26,7 @@ class PieComponent extends HTMLElement {
           //  labels: ["HTML", 'None'],
            datasets: [{
            data: [this.chart_val, this.chart_remainder],
-           backgroundColor: ['aqua', 'white'],
+           backgroundColor: [this.color, this.spacer],
            }],
         },
         options: {
@@ -34,16 +36,20 @@ class PieComponent extends HTMLElement {
   }
 
   render() {
+    this.setColor(this.attributes?.color?.value ?? this.color);
+    this.setBGColor(this.attributes?.spacer?.value ?? this.spacer);
     this.setType(this.attributes.type.value);
     this.setMax(this.attributes.max.value);
     this.setVal(this.attributes.val.value);
     this.setRemainder(this.chart_max - this.chart_val);
 
-    const layout = "<crust style='display: block; height: 50px; width: 50px;'><p>"+this.chart_val+"<canvas id="+this.id+"></canvas></crust>";
+    const layout = `<crust style='display: block; height: 50px; width: 50px;'><p>${this.chart_val}<canvas id=${this.id}></canvas></crust>`;
 
     this.shadowRoot.innerHTML = layout;
   }
 
+  setColor($a) { this.color = $a; }
+  setBGColor($a) { this.spacer = $a; }
   setId($a) { this.id = $a; }
   setType($a) { this.chart_type = $a; }
   setMax($a) { this.chart_max = $a; }
