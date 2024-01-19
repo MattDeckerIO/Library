@@ -67,7 +67,7 @@
         const contentSlot = this.querySelector('div[slot="content"]') ?? null;
         let [ariaExpanded, display, indicator] = this.getInitialState();
 
-        if (!headerSlot || !contentSlot) { return; }
+        if (!headerSlot || !contentSlot) { this.style.display = 'none'; return; }
 
         const template = `
           <style>
