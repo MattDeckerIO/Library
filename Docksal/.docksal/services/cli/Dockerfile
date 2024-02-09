@@ -1,17 +1,13 @@
+# Get Node
+FROM node:latest as node
+
+# Get Docksal CLI
 FROM docksal/cli:php8.1-3
-# FROM docksal/cli:php7.4-3.1
 
-# Install Node
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && apt-get install -yq nodejs build-essential
+# Copy Node things
+COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
+COPY --from=node /usr/local/bin/node /usr/local/bin/node
+RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
 
-# Install composer v2
-RUN \
-  composer self-update --2
-
-# Fix npm
-RUN npm i -gs npm sass
-
-# Disable xdebug when running CLI commands.
-RUN touch /home/docker/.bash_aliases
-RUN echo -e 'alias drush='XDEBUG_MODE=off drush'' >> /home/docker/.bash_aliases
-RUN echo -e 'alias composer='XDEBUG_MODE=off composer'' >> /home/docker/.bash_aliases
+# Install SASS
+RUN npm install -g sass
