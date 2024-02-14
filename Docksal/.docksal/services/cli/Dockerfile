@@ -9,5 +9,9 @@ COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
 COPY --from=node /usr/local/bin/node /usr/local/bin/node
 RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
 
+# Cato Networks VPN
+# ADD https://cc2.catonetworks.com/public/certificates/CatoNetworksTrustedRootCA.cer /usr/local/share/ca-certificates/CatoNetworksTrustedRootCA.crt
+# RUN update-ca-certificates
+
 # Install SASS
 RUN npm install -g sass
