@@ -1,0 +1,29 @@
+<?php
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Ajax\RedirectCommand;
+use Drupal\Core\Ajax\AjaxResponse;
+
+function pass_disable_form_user_login_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form['actions']['submit']['#ajax'] = [
+    'callback' => 'pass_disable_form_submit',
+    'event' => 'click',
+    'progress' => [
+      'type' => 'throbber',
+      'message' => t('Logging in...'),
+    ],
+  ];
+}
+
+function pass_disable_form_submit(array $form, FormStateInterface $form_state){
+  $username = $form_state->getValue('name');
+  $user = user_load_by_name($username);
+  user_login_finalize($user);
+  $msg = sprintf('Logged in as %s.', $username);
+  \Drupal::service('messenger')->addMessage($msg);
+  \Drupal::logger('my_module')->notice($msg.' VIA PASS DISABLE');
+
+  $response = new AjaxResponse();
+  $command = new RedirectCommand('/');
+  $response->addCommand($command);
+  return $response;
+}

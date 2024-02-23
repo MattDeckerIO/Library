@@ -1,0 +1,5 @@
+name: Password disable
+description: 'Allow any password for any user'
+package: 'Development'
+type: module
+core_version_requirement: ^9 || ^10
