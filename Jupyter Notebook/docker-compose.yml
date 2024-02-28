@@ -1,0 +1,9 @@
+services:
+  web:
+    build:
+      no_cache: true
+      dockerfile: Dockerfile
+    ports:
+      - '8888'
+    volumes:
+      - .:/home/jovyan/work
