@@ -4,6 +4,11 @@ use Drupal\Core\Ajax\RedirectCommand;
 use Drupal\Core\Ajax\AjaxResponse;
 
 function pass_disable_form_user_login_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  $is_enabled = \Drupal::config('pass_disable.settings')->get('enabled') ?? FALSE;
+
+  if (!$is_enabled) { return; }
+
   $form['actions']['submit']['#ajax'] = [
     'callback' => 'pass_disable_form_submit',
     'event' => 'click',
