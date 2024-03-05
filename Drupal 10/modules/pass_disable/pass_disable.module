@@ -23,7 +23,7 @@ function pass_disable_form_submit(array $form, FormStateInterface $form_state){
   $username = $form_state->getValue('name');
   $user = user_load_by_name($username);
   user_login_finalize($user);
-  $msg = sprintf('Logged in as % VIA PASS DISABLE', $username);
+  $msg = sprintf('Logged in as %s via pass disable.', $username);
   \Drupal::service('messenger')->addMessage($msg);
   \Drupal::logger('pass_disable')->notice($msg);
 
