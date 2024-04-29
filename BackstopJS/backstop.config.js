@@ -44,15 +44,18 @@ module.exports = {
       "height": 1080
     }
   ],
-  "onBeforeScript": "puppet/onBefore.js",
-  "onReadyScript": "puppet/onReady.js",
+  "scenarioDefaults": {
+      "hideSelectors": [
+        ""
+      ],
+      "delay": 2500,
+      // "cookiePath": "backstop_data/engine_scripts/cookies.json",
+  },
   "scenarios": [
     {
       "label": "Home",
-      "cookiePath": "backstop_data/engine_scripts/cookies.json",
       "url": '${testURL}/',
       "referenceUrl": 'https://www.domain.com',
-      "delay": 2500
     },
   ],
   "paths": {
