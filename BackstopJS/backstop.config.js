@@ -4,8 +4,8 @@
 // Put cookie authentication data into /backstop_data/engine_scripts/cookies.json
 
 // USAGE:
-// backstop test --config='./backstop.config.js' --env=dev
-// backstop reference --config='./backstop.config.js'
+// backstop test --env=dev
+// backstop reference
 
 var envs = {
   'lcl' : 'http://local.domain.com',
@@ -60,7 +60,7 @@ module.exports = {
   "scenarios": [
     {
       "label": "Home",
-      "url": '${testURL}/',
+      "url": `${testURL}/`,
       "referenceUrl": 'https://www.domain.com',
     },
   ],
@@ -76,7 +76,7 @@ module.exports = {
   "engineOptions": {
     "args": ["--no-sandbox"]
   },
-  "asyncCaptureLimit": 2,
+  "asyncCaptureLimit": 1,
   "asyncCompareLimit": 10,
   "debug": false,
   "debugWindow": false
