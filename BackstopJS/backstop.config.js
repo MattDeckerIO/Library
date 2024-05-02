@@ -54,7 +54,7 @@ module.exports = {
       "svg.ext",
     ],
     "delay": 5000,
-    "cookiePath": "backstop_data/engine_scripts/cookies/env.project.json",
+    "cookiePath": "backstop_data/cookies/env.project.json",
     "onBeforeScript": "puppet/onBefore.js",
   },
   "scenarios": [
