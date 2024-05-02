@@ -45,11 +45,17 @@ module.exports = {
     }
   ],
   "scenarioDefaults": {
-      "hideSelectors": [
-        ""
-      ],
-      "delay": 2500,
-      // "cookiePath": "backstop_data/engine_scripts/cookies.json",
+    // Remove the element and retain the space.
+    "hideSelectors": [
+      ""
+    ],
+    // Remove the element and retain the space.
+    "removeSelectors": [
+      "svg.ext",
+    ],
+    "delay": 5000,
+    "cookiePath": "backstop_data/engine_scripts/cookies/env.project.json",
+    "onBeforeScript": "puppet/onBefore.js",
   },
   "scenarios": [
     {
