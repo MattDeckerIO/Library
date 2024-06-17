@@ -1,0 +1,5 @@
+services:
+  json_views.views_style_plugin_manager:
+    class: Drupal\json_views\Plugin\views\style\JsonStyle
+    tags:
+      - { name: views.style_plugin, id: json }

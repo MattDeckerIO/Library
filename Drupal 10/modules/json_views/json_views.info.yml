@@ -1,0 +1,7 @@
+name: 'JSON Views'
+type: module
+description: 'Provides a JSON format for Views.'
+core_version_requirement: ^9 || ^10
+package: Custom
+dependencies:
+  - drupal:views
