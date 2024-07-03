@@ -3,7 +3,7 @@
 ### Add required npm packages to the Dockerfile.
 ```Dockerfile
   # Install Web Component Tooling
-  RUN npm install -g webpack webpack-cli to-string-loader css-loader sass-loader sass
+  RUN npm install -g webpack webpack-cli to-string-loader css-loader sass-loader babel-loader sass
 ```
 
 ### Add to root package.json
@@ -24,8 +24,8 @@ e.g. Drupal /web/themes/custom/THEME/js/components
 ```
 /web/themes/custom/THEME/js/components/webpack.config.js
 /web/themes/custom/THEME/js/components/dist/.gitkeep
-/web/themes/custom/THEME/js/components/src/js/sample.js
-/web/themes/custom/THEME/js/components/src/scss/sample.scss
+/web/themes/custom/THEME/js/components/src/sample/sample.js
+/web/themes/custom/THEME/js/components/src/sample/sample.scss
 ```
 
 
@@ -43,39 +43,11 @@ THEME
         │
         │───src
             |
-            |───js
+            |───sample
             |   sample.js
-            |   second-component.js
-            |
-            |───scss
             |   sample.scss
-            |   second-component.scss
-```
-
-
-
-# TODO
-I would love for components to be in a single directory:
-
-```markdown
-THEME
-│   THEME.info.yml
-│
-└───js
-    │
-    └───components
-        │   webpack.config.js
-        │
-        │───dist
-        │   .gitkeep
-        │
-        │───src
             |
-            |───component_1
-            |   component_1.js
-            |   component_1.scss
-            |
-            |───component_2
-            |   component_2.js
-            |   component_2.scss
+            |───second_component
+            |   second_component.js
+            |   second_component.scss
 ```
