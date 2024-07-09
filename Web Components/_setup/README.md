@@ -15,8 +15,8 @@
 <a name="npm"></a>
 ### Add required npm packages to the Dockerfile
 ```Dockerfile
-  # Install Web Component Tooling
-  RUN npm install -g webpack webpack-cli to-string-loader css-loader sass-loader babel-loader sass
+# Install Web Component Tooling
+RUN npm install -g webpack webpack-cli to-string-loader css-loader sass-loader babel-loader sass
 ```
 
 <a name="theme"></a>
