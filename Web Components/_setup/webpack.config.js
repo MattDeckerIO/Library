@@ -63,4 +63,8 @@ module.exports = {
   resolveLoader: {
     modules: ['node_modules', '/usr/local/lib/node_modules']
   },
+  watchOptions: {
+    poll: true,
+    ignored: /node_modules/
+  }
 };
