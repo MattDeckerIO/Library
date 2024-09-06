@@ -79,7 +79,7 @@ Web Components consist of new HTML tags. e.g. `<your-component>...</your-compone
         ```markdown
         your-component:
           js:
-            components/dist/your-component.bundle.js: {}
+            js/components/dist/your-component.bundle.js: {}
         ```
 
     1. Add a new template file for the element: \
