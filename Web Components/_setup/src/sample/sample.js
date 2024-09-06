@@ -1,4 +1,4 @@
-import styles from '../scss/sample.scss';
+import styles from './sample.scss';
 
 // console.log('Component SampleComponent loaded');
 
