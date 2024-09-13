@@ -74,9 +74,11 @@ module.exports = {
     }
   ],
   "scenarioDefaults": {
+    // Removes the element and retains the space.
     "hideSelectors": [
       ""
     ],
+    // Removes the element and the space.
     "removeSelectors": [
       ""
     ],
@@ -89,11 +91,12 @@ module.exports = {
   "scenarios": [
     {
       'label': 'UserAgent',
-      'url': 'https://51degrees.com/developers/user-agent-tester',
-      'referenceUrl': 'https://51degrees.com/developers/user-agent-tester',
+      'url': 'https://dnschecker.org/user-agent-info.php',
+      'referenceUrl': 'https://dnschecker.org/user-agent-info.php',
       'delay': 0,
     },
     {
+      // You must have at least one scenario with a 'test' keyword:
       'label': 'Homepage test',
       'url': path+'/',
       'referenceUrl': path+'/',
