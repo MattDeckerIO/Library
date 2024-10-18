@@ -2,6 +2,7 @@
 
 1. Install wikimedia/composer-merge-plugin
    - `composer require wikimedia/composer-merge-plugin`
+   - When prompted, press y to trust composer merge plugin to execute code.
 
 2. Search module directory for library files.
    - e.g:
