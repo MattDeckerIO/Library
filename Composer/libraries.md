@@ -16,7 +16,7 @@
      "merge-plugin": {
        "include": [
          "web/modules/contrib/*/composer.libraries.json"
-       ],
+       ]
      }
    },
    ```
