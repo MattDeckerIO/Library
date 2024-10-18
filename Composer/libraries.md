@@ -10,7 +10,7 @@
    - `find web/themes/* | grep -i 'libraries.json'`
    - `find web/* -type f -name '*lib*.json'`
 
-3. Update package.json to include libraries from contrib modules
+3. Update composer.json to include libraries from contrib modules
    ```bash
    "extra": {
      "merge-plugin": {
