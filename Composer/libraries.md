@@ -27,4 +27,4 @@
    find web/modules/* -type f -name '*lib*.json'
    web/modules/contrib/webform/composer.libraries.json
    ```
-   - `fin composer require 'drupal/webform:^VERSION' -W`
+   - `composer require 'drupal/webform:^VERSION' -W`
