@@ -1,0 +1,7 @@
+health.check:
+  path: '/health'
+  defaults:
+    _controller: '\Drupal\health\Controller\Health::check'
+    _title: 'Health Check'
+  requirements:
+    _permission: 'access content'

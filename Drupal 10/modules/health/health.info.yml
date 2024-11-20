@@ -1,0 +1,4 @@
+name: 'Health'
+description: 'Health check to confirm application availability'
+core_version_requirement: ^8 || ^9 || ^10
+type: module

@@ -1,0 +1,4 @@
+services:
+  health.controller:
+    class: Drupal\health\Controller\Health
+    arguments: []
