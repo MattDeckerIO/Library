@@ -1,0 +1,53 @@
+[
+    {
+        "title": "Introduction to Alpine.js",
+        "description": "A comprehensive guide to getting started with Alpine.js.",
+        "tags": ["JavaScript", "Frontend", "Guide"]
+    },
+    {
+        "title": "Advanced Alpine.js Techniques",
+        "description": "Explore advanced techniques and patterns in Alpine.js.",
+        "tags": ["JavaScript", "Frontend", "Advanced"]
+    },
+    {
+        "title": "Building Interactive UIs with Alpine.js",
+        "description": "Learn how to build interactive user interfaces using Alpine.js.",
+        "tags": ["JavaScript", "Frontend", "UI"]
+    },
+    {
+        "title": "Alpine.js and Tailwind CSS",
+        "description": "Integrate Alpine.js with Tailwind CSS for rapid UI development.",
+        "tags": ["JavaScript", "CSS", "Tailwind"]
+    },
+    {
+        "title": "State Management in Alpine.js",
+        "description": "Manage state effectively in your Alpine.js applications.",
+        "tags": ["JavaScript", "Frontend", "State Management"]
+    },
+    {
+        "title": "Alpine.js for Beginners",
+        "description": "A beginner-friendly introduction to Alpine.js.",
+        "tags": ["JavaScript", "Frontend", "Beginner"]
+    },
+    {
+        "title": "Alpine.js Components",
+        "description": "Create reusable components with Alpine.js.",
+        "tags": ["JavaScript", "Frontend", "Components"]
+    },
+    {
+        "title": "Testing Alpine.js Applications",
+        "description": "Best practices for testing your Alpine.js applications.",
+        "tags": ["JavaScript", "Frontend", "Testing"]
+    },
+    {
+        "title": "Alpine.js and AJAX",
+        "description": "Handle AJAX requests in Alpine.js applications.",
+        "tags": ["JavaScript", "Frontend", "AJAX"]
+    },
+    {
+        "title": "Deploying Alpine.js Applications",
+        "description": "Steps to deploy your Alpine.js applications to production.",
+        "tags": ["JavaScript", "Frontend", "Deployment"]
+    }
+]
+
