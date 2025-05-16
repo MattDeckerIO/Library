@@ -1,5 +1,5 @@
 # Get Node
-FROM node:latest as node
+FROM node:latest AS node
 
 # Get Docksal CLI
 FROM docksal/cli:php8.1-3
