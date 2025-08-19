@@ -2,7 +2,7 @@
 FROM node:latest AS node
 
 # Get Docksal CLI
-FROM docksal/cli:php8.1-3
+FROM docksal/cli:php8.3-3
 
 # Copy Node things
 COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
