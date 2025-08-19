@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="This code may have been partially generated or edited by an AI tool. Microsoft Copilot">
+    <title>Alpine.js Search and Filter Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <style>
+        .active {
+            background-color: #007BFF;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div x-data="searchApp()">
+        <input type="text" x-model="query" placeholder="Search" />
+        <button @click="search()">Search</button>
+        
+        <button :class="{ 'active': activeFilters.includes('Frontend') }" @click="toggleFilter('Frontend')">Frontend</button>
+        <button :class="{ 'active': activeFilters.includes('Components') }" @click="toggleFilter('Components')">Components</button>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Tags</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template x-for="item in paginatedResults" :key="item.title">
+                    <tr>
+                        <td x-text="item.title"></td>
+                        <td x-text="item.description"></td>
+                        <td x-text="item.tags.join(', ')"></td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+        
+        <div>
+            <button @click="prevPage()" :disabled="currentPage === 1">Previous</button>
+            <span>Page <span x-text="currentPage"></span> of <span x-text="totalPages"></span></span>
+            <button @click="nextPage()" :disabled="currentPage === totalPages">Next</button>
+        </div>
+    </div>
+
+    <script>
+        function searchApp() {
+            return {
+                query: '',
+                results: [],
+                activeFilters: [],
+                filteredResults: [],
+                paginatedResults: [],
+                currentPage: 1,
+                totalPages: 1,
+                search() {
+                    fetch('data.json')
+                        .then(response => response.json())
+                        .then(data => {
+                            this.results = data.filter(item => item.description.toLowerCase().includes(this.query.toLowerCase()));
+                            this.applyFilters();
+                        });
+                },
+                toggleFilter(tag) {
+                    if (this.activeFilters.includes(tag)) {
+                        this.activeFilters = this.activeFilters.filter(filter => filter !== tag);
+                    } else {
+                        this.activeFilters.push(tag);
+                    }
+                    this.applyFilters();
+                },
+                applyFilters() {
+                    if (this.activeFilters.length > 0) {
+                        this.filteredResults = this.results.filter(item => this.activeFilters.every(filter => item.tags.includes(filter)));
+                    } else {
+                        this.filteredResults = this.results;
+                    }
+                    this.currentPage = 1; // Reset to first page
+                    this.paginateResults();
+                },
+                paginateResults() {
+                    this.totalPages = Math.ceil(this.filteredResults.length / 5);
+                    this.currentPage = Math.min(this.currentPage, this.totalPages);
+                    const start = (this.currentPage - 1) * 5;
+                    const end = start + 5;
+                    this.paginatedResults = this.filteredResults.slice(start, end);
+                },
+                prevPage() {
+                    if (this.currentPage > 1) {
+                        this.currentPage--;
+                        this.paginateResults();
+                    }
+                },
+                nextPage() {
+                    if (this.currentPage < this.totalPages) {
+                        this.currentPage++;
+                        this.paginateResults();
+                    }
+                },
+                init() {
+                    fetch('data.json')
+                        .then(response => response.json())
+                        .then(data => {
+                            this.results = data;
+                            this.filteredResults = data;
+                            this.paginateResults();
+                        });
+                }
+            }
+        }
+    </script>
+</body>
+</html>

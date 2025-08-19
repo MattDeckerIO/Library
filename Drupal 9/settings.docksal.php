@@ -8,13 +8,10 @@ $databases['default']['default'] = array (
   'port' => '3306',
   'driver' => 'mysql',
   'prefix' => '',
-  'collation' => 'utf8mb4_general_ci',
+  // 'collation' => 'utf8mb4_general_ci',
 );
 
 $settings['hash_salt'] = '676b67d780d83cf9cbe6eab3ce76c80f6460368b';
-
-assert_options(ASSERT_ACTIVE, TRUE);
-\Drupal\Component\Assertion\Handle::register();
 
 $settings['cache']['bins']['render'] = 'cache.backend.null';
 $settings['cache']['bins']['page'] = 'cache.backend.null';

@@ -1,0 +1,8 @@
+@use "../../../../sass/vars" as vars;
+
+component-web-component:not(:defined) { display: none; }
+
+.wrapper
+{
+  .child { color: vars.$black; }
+}

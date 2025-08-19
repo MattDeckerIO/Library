@@ -3,6 +3,13 @@ parameters:
   twig.config:
     debug: true
     auto_reload: true
+  renderer.config:
+    required_cache_contexts: []
+    auto_placeholder_conditions:
+      max-age: 0
+      contexts: []
+      tags: []
+    debug: true
 services:
   cache.backend.null:
     class: Drupal\Core\Cache\NullBackendFactory

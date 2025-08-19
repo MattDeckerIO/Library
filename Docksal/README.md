@@ -3,13 +3,6 @@
 1. Install Docksal
    - https://docksal.io/installation#macos-docker-desktop
 
-1. Add Docksal alias to `~/.bashrc` or `~/.zshrc`.
-   - `alias docksal="DOCKER_NATIVE=1 bash <(curl -fsSL https://get.docksal.io)"`
-   - Source your modified `~/.bashrc` or `~/.zshrc`.
-
-1. Initialize Docksal containers
-   - Run `docksal` via terminal.
-
 1. Verify multiple docksal containers are running.
    - `docker ps`
 

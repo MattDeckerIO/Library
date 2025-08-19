@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function json_views_theme() {
+  return [
+    'views_view_json' => [
+      'variables' => ['view' => NULL],
+      'template' => 'views-view-json',
+    ],
+  ];
+}
