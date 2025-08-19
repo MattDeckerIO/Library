@@ -11,3 +11,6 @@ RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
 
 # Install SASS
 RUN npm install -g sass
+
+# Install Web Component Tooling
+# RUN npm install -g webpack webpack-cli to-string-loader css-loader sass-loader babel-loader
