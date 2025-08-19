@@ -19,5 +19,7 @@ services:
       - PMA_HOST=db
       - PMA_USER=root
       - PMA_PASSWORD=root
+    volumes:
+      - $PROJECT_ROOT/.docksal/etc/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
     labels:
       - io.docksal.virtual-host=pma.${VIRTUAL_HOST}
