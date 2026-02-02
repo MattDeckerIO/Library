@@ -45,7 +45,8 @@
   - `fin db dump filename.sql` Exports the database
   - `fin db/backup` Exports the database with a better filename.
   - `fin db import filename.sql` Imports a database file.
-  -  `zcat < filename.sql.gz | fin db import` Imports a compressed database file.
+  - `zcat < filename.sql.gz | fin db import` Imports a compressed database file.
+  - `fin db cli -e "SELECT VERSION();"` Get the MySQL version.
 - **CLI**
   - `fin drush *command*` Runs a drush command. e.g. `fin drush cim -y`
   - `fin composer *command*` Runs composer commands e.g. `fin composer install`
