@@ -11,6 +11,10 @@ services:
     environment:
       - COMPOSER_MEMORY_LIMIT=-1
       - COMPOSER_PROCESS_TIMEOUT=20000
+  # Database service
+  # db:
+  #   image: ${COMPOSE_PROJECT_NAME_SAFE}_db
+  #   build: services/db
   # PHPMyAdmin http://pma.<VIRTUAL_HOST>
   pma:
     hostname: pma
